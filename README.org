@@ -1,1 +1,1 @@
-This is the Matchmore ALPS iOS SDK project.
+ALPS iOS demo project including API and SDK submodules.
