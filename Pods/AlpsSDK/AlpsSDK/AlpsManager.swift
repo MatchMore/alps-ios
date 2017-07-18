@@ -332,7 +332,7 @@ open class AlpsManager: AlpsSDK {
             completion(subscriptions)
         }
     }
-    func getAllPublicationsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ publications: [Publication]) -> Void) {
+    public func getAllPublicationsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ publications: [Publication]) -> Void) {
         let _ = Alps.PublicationAPI.getPublications(userId: userId, deviceId: deviceId) {
             (publications, error) -> Void in
             if let p = publications{
@@ -365,7 +365,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    func getAllSubscriptionsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ subscriptions: [Subscription]) -> Void) {
+    public func getAllSubscriptionsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ subscriptions: [Subscription]) -> Void) {
         let _ = Alps.SubscriptionAPI.getSubscriptions(userId: userId, deviceId: deviceId) {
             (subscriptions, error) -> Void in
             if let s = subscriptions{

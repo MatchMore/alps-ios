@@ -22,6 +22,7 @@ class SubscriptionTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("\(appDelegate.userId) and \(appDelegate.deviceId)")
         if appDelegate.userId != nil && appDelegate.deviceId != nil {
             // call the API, to retrieve all the subscriptions for current user and device
             loadSubscriptions(userId: self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
@@ -138,7 +139,7 @@ class SubscriptionTableViewController: UITableViewController {
 //            subscriptions.append(subscription)
 //            tableView.insertRows(at: [newIndexPath], with: .automatic)
 //        }
-//        
+//
     }
     
     //MARK: Private Methods
@@ -149,14 +150,12 @@ class SubscriptionTableViewController: UITableViewController {
     
     //MARK: SDK func
     func getAllSubscriptionsForDevice(_ userId:String, deviceId: String) {
-//        if self.appDelegate.deviceId != nil && self.appDelegate.userId != nil{
-//            self.appDelegate.alps.getAllSubscriptionsForDevice(userId: String, deviceId: String) {
-//                (_ subscriptions) in
-//                if let s = subscriptions {
-//                    self.subscriptions = s
-//                }
-//            }
-//        }
+        self.appDelegate.alps.getAllSubscriptionsForDevice(userId, deviceId: deviceId) {
+            (_ subscriptions) in
+            self.subscriptions = subscriptions
+            print("\(subscriptions.count) and \(subscriptions.count)")
+            self.tableView.reloadData()
+        }
     }
 
     

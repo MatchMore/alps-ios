@@ -26,7 +26,7 @@ class PublicationTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if appDelegate.userId != nil && appDelegate.deviceId != nil {
+        if self.appDelegate.userId != nil && self.appDelegate.deviceId != nil {
             // call the API, to retrieve all the subscriptions for current user and device
             loadPublications(userId: self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
         }else{
@@ -66,8 +66,8 @@ class PublicationTableViewController: UITableViewController {
             fatalError("PublicationTableViewController error : the publication is not from a Publication class.")
         }
         cell.publicationIdLabel.text = pub.publicationId!
-        cell.latitudeLabel.text = String(describing: pub.location?.latitude)
-        cell.longitudeLabel.text = String(describing: pub.location?.longitude)
+//        cell.latitudeLabel.text = String(describing: pub.location?.latitude)
+//        cell.longitudeLabel.text = String(describing: pub.location?.longitude)
         cell.topicLabel.text = pub.topic!
         cell.timeStampLabel.text = String(describing: pub.timestamp)
         cell.durationLabel.text = String(describing: pub.duration)
@@ -157,14 +157,10 @@ class PublicationTableViewController: UITableViewController {
     //MARK: SDK Functions
     
     func getAllPublicationsForDevice(_ userId:String, deviceId: String) {
-//        if self.appDelegate.deviceId != nil && self.appDelegate.userId != nil{
-//            self.appDelegate.alps.getAllPublicationsForDevice(userId: String, deviceId: String) {
-//                (_ publications) in
-//                if let p = publcations {
-//                    self.publications = p
-//                }
-//            }
-//        }
+        self.appDelegate.alps.getAllPublicationsForDevice(userId, deviceId: deviceId) {
+            (_ publications) in
+            self.publications = publications
+            self.tableView.reloadData()
+        }
     }
-    
 }

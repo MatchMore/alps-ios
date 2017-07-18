@@ -58,7 +58,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
         self.appDelegate.username = userInput!
-        self.appDelegate.deviceName = "\(String(describing: username))'s device"
+        self.appDelegate.deviceName = "\(String(describing: self.appDelegate.username))'s device"
         getLastLocation()
         DoLogin(self.appDelegate.username)
     }
@@ -71,10 +71,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func LoginIsDone(){
         _username.isEnabled = false
-        // go to next view
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Navigation Controller")
-//        self.present(nextViewController, animated:true, completion:nil)
     }
     //MARK: USEFUL LOGIN INFORMATION TO create the device
     
@@ -121,6 +117,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                                         if let d = device {
                                             print("Created device: id = \(String(describing: d.deviceId)), name = \(String(describing: d.name))")
                                             self.appDelegate.device = d
+                                            self.appDelegate.deviceId = d.deviceId!
                                             completion()
                                         }
                 }
