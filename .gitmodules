@@ -1,6 +1,0 @@
-[submodule "sdk"]
-	path = sdk
-	url = git@bitbucket.org:scalps/ios-sdk.git
-[submodule "api"]
-	path = api
-	url = git@bitbucket.org:scalps/ios-api.git
