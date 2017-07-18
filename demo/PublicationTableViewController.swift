@@ -25,9 +25,15 @@ class PublicationTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        loadPublications()
+    override func viewDidAppear(_ animated: Bool) {
+        if appDelegate.userId != nil && appDelegate.deviceId != nil {
+            // call the API, to retrieve all the subscriptions for current user and device
+            loadPublications(userId: self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
+        }else{
+            print("ERROR in PUBLICATIONTABLEVIEWCONTROLLER: UserId or deviceId is nil.")
+        }
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -105,15 +111,30 @@ class PublicationTableViewController: UITableViewController {
      }
      */
     
-    /*
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     print("our indexPath Row is : \(indexPath.row)")
+     print("our publication is : \(String(describing: publications[indexPath.row].publicationId))")
      }
-     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Detail" {
+            // Show the details of a match
+            if let dVC = segue.destination as? DetailViewController{
+                if let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell){
+                    dVC.publication = publicationAtIndexPath(indexPath: indexPath as NSIndexPath)
+                }
+            }
+            
+        }
+    }
+    
+    //MARK: HELPER method
+    func publicationAtIndexPath(indexPath: NSIndexPath) -> Publication{
+        let publication = publications[indexPath.row]
+        return publication
+    }
     
     //MARK: Action
     @IBAction func unwindToPublicationList(sender: UIStoryboardSegue) {
@@ -130,12 +151,12 @@ class PublicationTableViewController: UITableViewController {
     
     //MARK: Private Methods
     
-    private func loadPublications() {
-//        self.appDelegate.alps.getAllPublicationsForDevice(userId:self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
+    private func loadPublications(userId: String, deviceId: String) {
+        self.getAllPublicationsForDevice(userId, deviceId: deviceId)
     }
     //MARK: SDK Functions
-//    
-//    func getAllPublicationsForDevice(_ userId:String, deviceId: String) {
+    
+    func getAllPublicationsForDevice(_ userId:String, deviceId: String) {
 //        if self.appDelegate.deviceId != nil && self.appDelegate.userId != nil{
 //            self.appDelegate.alps.getAllPublicationsForDevice(userId: String, deviceId: String) {
 //                (_ publications) in
@@ -144,6 +165,6 @@ class PublicationTableViewController: UITableViewController {
 //                }
 //            }
 //        }
-//    }
+    }
     
 }

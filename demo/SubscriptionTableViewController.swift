@@ -19,14 +19,15 @@ class SubscriptionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // call the API, to retrieve all the subscriptions for current user and device
-        loadSubscriptions()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if appDelegate.userId != nil && appDelegate.deviceId != nil {
+            // call the API, to retrieve all the subscriptions for current user and device
+            loadSubscriptions(userId: self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
+        }else{
+            print("ERROR in SUBSCRIPTIONTABLEVIEWCONTROLLER: UserId or deviceId is nil.")
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,16 +104,30 @@ class SubscriptionTableViewController: UITableViewController {
      }
      */
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+     // MARK: - Navigation
+     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         print("our indexPath Row is : \(indexPath.row)")
+         print("our subscription is : \(String(describing: subscriptions[indexPath.row].subscriptionId))")
+     }
+     
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if segue.identifier == "Show Detail" {
+             // Show the details of a match
+             if let dVC = segue.destination as? DetailViewController{
+                if let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell){
+                    dVC.subscription = subscriptionAtIndexPath(indexPath: indexPath as NSIndexPath)
+                }
+            }
+        }
+    }
+    
+     //MARK: HELPER method
+     func subscriptionAtIndexPath(indexPath: NSIndexPath) -> Subscription{
+     let subscription = subscriptions[indexPath.row]
+     return subscription
+     }
+ 
     //MARK: Action
     @IBAction func unwindToSubscriptionList(sender: UIStoryboardSegue) {
 //        if let sourceViewController = sender.source as? SubscriptionViewController, let subscription = sourceViewController.subscription {
@@ -124,17 +139,16 @@ class SubscriptionTableViewController: UITableViewController {
 //            tableView.insertRows(at: [newIndexPath], with: .automatic)
 //        }
 //        
-        print("Hello send you to this page.")
     }
     
     //MARK: Private Methods
     
-    private func loadSubscriptions() {
-        
+    private func loadSubscriptions(userId: String, deviceId: String) {
+        self.getAllSubscriptionsForDevice(userId, deviceId: deviceId)
     }
     
     //MARK: SDK func
-//    func getAllSubscriptionsForDevice(_ userId:String, deviceId: String) {
+    func getAllSubscriptionsForDevice(_ userId:String, deviceId: String) {
 //        if self.appDelegate.deviceId != nil && self.appDelegate.userId != nil{
 //            self.appDelegate.alps.getAllSubscriptionsForDevice(userId: String, deviceId: String) {
 //                (_ subscriptions) in
@@ -143,7 +157,7 @@ class SubscriptionTableViewController: UITableViewController {
 //                }
 //            }
 //        }
-//    }
+    }
 
     
 }
