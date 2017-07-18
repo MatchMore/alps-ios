@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Scalps
-import ScalpsSDK
+import Alps
+import AlpsSDK
 
 class MatchViewController: UIViewController {
     

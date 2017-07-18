@@ -8,8 +8,8 @@
 
 import UIKit
 import os.log
-import Scalps
-import ScalpsSDK
+import AlpsSDK
+import Alps
 
 class SubscriptionViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate  {
     

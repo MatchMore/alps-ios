@@ -8,8 +8,8 @@
 
 import UIKit
 import os.log
-import Scalps
-import ScalpsSDK
+import AlpsSDK
+import Alps
 
 class PublicationViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate  {
     

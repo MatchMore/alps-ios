@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Scalps
-import ScalpsSDK
+import AlpsSDK
+import Alps
 
 class MatchTableViewController: UITableViewController {
 
@@ -112,9 +112,6 @@ class MatchTableViewController: UITableViewController {
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("our indexPath Row is : \(indexPath.row)")
         print("our match is : \(String(describing: matches[indexPath.row].matchId))")
-//        tableView.
-//        
-//         self.performSegue(withIdentifier: "matchSegue", sender: matches[indexPath.row])
         
      }
      

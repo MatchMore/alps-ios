@@ -7,12 +7,14 @@
 //
 
 import UIKit
-import ScalpsSDK
-import Scalps
+import AlpsSDK
+import Alps
 
 class SubscriptionTableViewController: UITableViewController {
     
     var subscriptions = [Subscription]()
+    // Using appDelegate as a singleton
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,5 +132,18 @@ class SubscriptionTableViewController: UITableViewController {
     private func loadSubscriptions() {
         
     }
+    
+    //MARK: SDK func
+//    func getAllSubscriptionsForDevice(_ userId:String, deviceId: String) {
+//        if self.appDelegate.deviceId != nil && self.appDelegate.userId != nil{
+//            self.appDelegate.alps.getAllSubscriptionsForDevice(userId: String, deviceId: String) {
+//                (_ subscriptions) in
+//                if let s = subscriptions {
+//                    self.subscriptions = s
+//                }
+//            }
+//        }
+//    }
+
     
 }

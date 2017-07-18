@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import ScalpsSDK
-import Scalps
+import AlpsSDK
+import Alps
 
 class MatchTableViewCell: UITableViewCell {
     

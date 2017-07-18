@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Scalps
-import ScalpsSDK
+import Alps
+import AlpsSDK
 import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
@@ -19,7 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var _username: UITextField!
     // Using appDelegate as a singleton
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var alps : ScalpsManager!
+    var alps : AlpsManager!
     var username : String?
     var deviceName : String?
     

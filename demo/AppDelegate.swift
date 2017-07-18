@@ -7,15 +7,15 @@
 //
 
 import UIKit
-import ScalpsSDK
-import Scalps
+import AlpsSDK
+import Alps
 import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let ourLocationManager: CLLocationManager = CLLocationManager()
-    var alps: ScalpsManager!
+    var alps: AlpsManager!
     var userId : String?
     var deviceId : String?
     var username = ""
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        alps = ScalpsManager(apiKey: "ea0df90a-db0a-11e5-bd35-3bd106df139b", clLocationManager: ourLocationManager)
+        alps = AlpsManager(apiKey: "ea0df90a-db0a-11e5-bd35-3bd106df139b", clLocationManager: ourLocationManager)
         return true
     }
     

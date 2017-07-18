@@ -8,8 +8,8 @@
 
 import UIKit
 import os.log
-import Scalps
-import ScalpsSDK
+import Alps
+import AlpsSDK
 
 class OfferViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate  {
 

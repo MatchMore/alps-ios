@@ -6,12 +6,14 @@
 //  Copyright © 2017 jdu. All rights reserved.
 //
 import UIKit
-import ScalpsSDK
-import Scalps
+import AlpsSDK
+import Alps
 
 class PublicationTableViewController: UITableViewController {
     
     var publications = [Publication]()
+    // Using appDelegate as a singleton
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,10 @@ class PublicationTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadPublications()
     }
     
     override func didReceiveMemoryWarning() {
@@ -125,7 +131,19 @@ class PublicationTableViewController: UITableViewController {
     //MARK: Private Methods
     
     private func loadPublications() {
-        
+//        self.appDelegate.alps.getAllPublicationsForDevice(userId:self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
     }
+    //MARK: SDK Functions
+//    
+//    func getAllPublicationsForDevice(_ userId:String, deviceId: String) {
+//        if self.appDelegate.deviceId != nil && self.appDelegate.userId != nil{
+//            self.appDelegate.alps.getAllPublicationsForDevice(userId: String, deviceId: String) {
+//                (_ publications) in
+//                if let p = publcations {
+//                    self.publications = p
+//                }
+//            }
+//        }
+//    }
     
 }
