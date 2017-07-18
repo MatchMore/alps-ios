@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Alps.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AlpsSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-demo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -20,16 +30,6 @@
 			<false/>
 		</dict>
 		<key>Pods-demoUITests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Scalps.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ScalpsSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

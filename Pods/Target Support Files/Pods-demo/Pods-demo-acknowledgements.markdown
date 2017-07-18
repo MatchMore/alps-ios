@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## Scalps
+## Alps
 
                                  Apache License
                            Version 2.0, January 2004
@@ -229,7 +229,7 @@ THE SOFTWARE.
    limitations under the License.
 
 
-## ScalpsSDK
+## AlpsSDK
 
 Copyright (c) 2016 rk <rafal.kowalski@mac.com>
 
