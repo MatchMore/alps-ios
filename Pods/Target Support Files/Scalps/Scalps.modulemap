@@ -1,0 +1,6 @@
+framework module Scalps {
+  umbrella header "Scalps-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module ScalpsSDK {
+  umbrella header "ScalpsSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
