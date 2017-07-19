@@ -16,8 +16,6 @@ class PublicationTableViewCell: UITableViewCell {
     @IBOutlet weak var topicLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var latitudeLabel: UILabel!
-    @IBOutlet weak var longitudeLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
