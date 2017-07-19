@@ -73,7 +73,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 
         if (shouldAllow == true) {
             print("Location updates allowed")
-//            manager.startUpdatingLocation()
+            //MARK: BEUG ICI
+            manager.startUpdatingLocation()
         } else {
             print("Location updates denied")
         }

@@ -34,23 +34,35 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if publication != nil {
-            labelIdLabel.text = "Publication Id :"
+        if let p = publication {
+            labelIdLabel.text = "Publication ID :"
             labelPropertiesLabel.text = "Properties :"
             
-            idLabel.text = publication?.publicationId
-            deviceIdLabel.text = publication?.deviceId
-            topicLabel.text = publication?.topic
-            timeStampLabel.text = String(describing: publication?.timestamp)
-            rangeLabel.text = String(describing: publication?.range)
-            durationLabel.text = String(describing: publication?.duration)
-            latitudeLabel.text = String(describing: publication?.location?.latitude)
-            longitudeLabel.text = String(describing: publication?.location?.longitude)
-            propertiesLabel.text = String(describing: publication?.properties)
+            idLabel.text = p.publicationId
+            deviceIdLabel.text = p.deviceId
+            topicLabel.text = p.topic
+            if let timestamp = p.timestamp{
+                timeStampLabel.text = String(describing: timestamp)
+            }
+            if let range = p.range{
+                rangeLabel.text = String(describing: range)
+            }
+            if let duration = p.duration {
+                durationLabel.text = String(describing: duration)
+            }
+            if let location = p.location{
+                if let latitude = location.latitude{
+                    latitudeLabel.text = String(describing: latitude)}
+                if let longitude = location.longitude{
+                longitudeLabel.text = String(describing: longitude)}
+            }
+            if let properties = p.properties{
+                propertiesLabel.text = String(describing: properties)
+            }
         }
         
         if subscription != nil {
-            labelIdLabel.text = "Subscription Id :"
+            labelIdLabel.text = "Subscription ID :"
             labelPropertiesLabel.text = "Selector :"
             
             idLabel.text = subscription?.subscriptionId
