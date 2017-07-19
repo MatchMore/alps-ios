@@ -104,7 +104,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func verifyAccuracy(){
         if locationBuffer.count == 5 {
-            print("Location Buffer is ready...")
             var averageAccuracy : Double = 0.0
             var sumAccuracy : Double = 0.0
             for l in locationBuffer{
@@ -112,7 +111,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
             averageAccuracy = sumAccuracy/5
             if averageAccuracy <= 100 {
-                print(averageAccuracy)
                 loginButton.isEnabled = true
                 accuracyLabel.text = String(describing : averageAccuracy)
                 checkedLabel.text = "Location accuracy checked"

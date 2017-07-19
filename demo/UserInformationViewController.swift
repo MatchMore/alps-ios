@@ -23,9 +23,9 @@ class UserInformationViewController: UIViewController {
     @IBOutlet weak var deviceTokenLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var lastLocationView: UIView!
-    @IBOutlet weak var deviceIdView: UIView!
-    @IBOutlet weak var userIdView: UIView!
+//    @IBOutlet weak var lastLocationView: UIView!
+//    @IBOutlet weak var deviceIdView: UIView!
+//    @IBOutlet weak var userIdView: UIView!
     
     
     
@@ -40,15 +40,16 @@ class UserInformationViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        lastLocationView.layer.cornerRadius = 5;
-        lastLocationView.layer.masksToBounds = true;
-        lastLocationView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
-        deviceIdView.layer.cornerRadius = 5;
-        deviceIdView.layer.masksToBounds = true;
-        deviceIdView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
-        userIdView.layer.cornerRadius = 5;
-        userIdView.layer.masksToBounds = true;
-        userIdView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
+//        // Making rounded corner for view
+//        lastLocationView.layer.cornerRadius = 5;
+//        lastLocationView.layer.masksToBounds = true;
+//        lastLocationView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
+//        deviceIdView.layer.cornerRadius = 5;
+//        deviceIdView.layer.masksToBounds = true;
+//        deviceIdView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
+//        userIdView.layer.cornerRadius = 5;
+//        userIdView.layer.masksToBounds = true;
+//        userIdView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
         
         self.appDelegate.alps.onLocationUpdate(){
             (_ location) in
