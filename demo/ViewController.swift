@@ -15,8 +15,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: Properties
     
+    @IBOutlet weak var checkedLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var checkedImage: UIImageView!
     @IBOutlet weak var _username: UITextField!
+    @IBOutlet weak var accuracyLabel: UILabel!
+    
     // Using appDelegate as a singleton
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var alps : AlpsManager!
@@ -31,11 +35,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var verticalAcc : Double!
     var locationBuffer = [CLLocation]()
     var incrementBuffer : Int = 0
+    var location : CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         self.alps = appDelegate.alps
+        for i in 1...5 {
         self.alps.onLocationUpdate(){
             (_ location) in
             if self.incrementBuffer < 5 {
@@ -46,6 +53,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.incrementBuffer += 1
             }
             self.verifyAccuracy()
+        }
         }
     }
     
@@ -102,17 +110,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 sumAccuracy += l.horizontalAccuracy
             }
             averageAccuracy = sumAccuracy/5
-            if averageAccuracy <= 50 {
+            if averageAccuracy <= 100 {
                 print(averageAccuracy)
                 loginButton.isEnabled = true
+                accuracyLabel.text = String(describing : averageAccuracy)
+                checkedLabel.text = "Location accuracy checked."
+                checkedLabel.textColor = UIColor(red:0.263448894023895, green:0.684073209762573, blue:0.294317364692688, alpha:1.0)
+                checkedImage.isHidden = false
             }else{
-                print("Not enough accuracy to connect, wait a little more please.")
+                accuracyLabel.text = String(describing : averageAccuracy)
                 loginButton.isEnabled = false
+                checkedLabel.text = "Checking your location accuracy, wait a moment please."
+                checkedLabel.textColor = UIColor(red: 0.998138010501862, green: 0.392119288444519, blue: 0.320700377225876, alpha: 1.0)
+                checkedLabel.isHidden = false
+                checkedImage.isHidden = true
             }
         }else{
-            print("Wait location buffer is checking the accuracy...")
-            print(locationBuffer.count)
+            accuracyLabel.text = "Calculating..."
+            checkedLabel.isHidden = false
             loginButton.isEnabled = false
+            checkedLabel.text = "Checking your location accuracy, wait a moment please."
+            checkedLabel.textColor = UIColor(red: 0.998138010501862, green: 0.392119288444519, blue: 0.320700377225876, alpha: 1.0)
+            checkedImage.isHidden = true
         }
     }
     
@@ -173,8 +192,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func onLocationUpdate() {
         alps.onLocationUpdate() {
             (_ location) in
-            print("\(location.coordinate.latitude)")
-            print("\(location.coordinate.longitude)")
+            self.location = location
         }
     }
 }

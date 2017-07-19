@@ -62,10 +62,10 @@ class MatchTableViewController: UITableViewController {
         }
         
         cell.match = m
+        
         cell.matchIdLabel.text = m.matchId!
         cell.topicLabel.text = m.publication?.topic!
-        cell.timeStampLabel.text = String(describing: m.timestamp)
-        cell.selectorLabel.text = String(describing: m.description)
+        cell.timeStampLabel.text = String(describing: m.timestamp!)
         
         
         return cell

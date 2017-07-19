@@ -32,21 +32,23 @@ class MatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        matchIdLabel.text = match?.matchId
-        timeStampLabel.text = String(describing: match?.timestamp)
-        topicLabel.text = match?.publication?.topic
-        
-        self.subscription = match?.subscription
-        self.publication = match?.publication
-        
-        publicationIdLabel.text = publication?.publicationId
-        publicationRangeLabel.text = String(describing: publication?.range)
-        publicationPropertiesLabel.text = String(describing: publication?.properties)
-        
-        subscriptionIdLabel.text = subscription?.subscriptionId
-        subscriptionRangeLabel.text = String(describing: subscription?.range)
-        subscriptionPropertiesLabel.text = String(describing: subscription?.selector)
+        guard let match = self.match else{
+            print("ERROR in MatchViewController : match not found.")
+            return
+        }
+        matchIdLabel.text = match.matchId
+        timeStampLabel.text = String(describing: match.timestamp!)
+        if let publication = match.publication{
+            topicLabel.text = publication.topic
+            publicationIdLabel.text = publication.publicationId
+            publicationRangeLabel.text = String(describing: publication.range!)
+            publicationPropertiesLabel.text = String(describing: publication.properties!)
+        }
+        if let subscription = match.subscription{
+            subscriptionIdLabel.text = subscription.subscriptionId
+            subscriptionRangeLabel.text = String(describing: subscription.range!)
+            subscriptionPropertiesLabel.text = String(describing: subscription.selector!)
+        }
         
     }
 

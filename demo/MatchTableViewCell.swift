@@ -16,7 +16,6 @@ class MatchTableViewCell: UITableViewCell {
 
     @IBOutlet weak var matchIdLabel: UILabel!
     @IBOutlet weak var topicLabel: UILabel!
-    @IBOutlet weak var selectorLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
     
     var match : Match?

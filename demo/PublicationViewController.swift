@@ -65,7 +65,6 @@ class PublicationViewController: UIViewController, UITextFieldDelegate, UINaviga
         }
     }
     
-    
     func topicButtonTapped(button: UIButton) {
         switch (button.titleLabel)!.text!{
         case "ticketstosale":
@@ -114,47 +113,12 @@ class PublicationViewController: UIViewController, UITextFieldDelegate, UINaviga
         }
     }
     
-    
-    /*
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+ 
     // This method lets you configure a view controller before it's presented.
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-    
-    //    @IBAction func publish(_ sender: Any) {
-    //        guard let button = sender as? UIBarButtonItem, button === publishButton else {
-    //            os_log("The save button was not pressed, cancelling, or no topic was chosen.", log: OSLog.default, type: .debug)
-    //            return
-    //        }
-    //        var chosenTopic : TopicRadio?
-    //        for t in topicButtons{
-    //            if t.button.isSelected == true {
-    //                chosenTopic = t
-    //            }
-    //        }
-    //
-    //        if chosenTopic != nil{
-    //            let ourTopic = chosenTopic?.button.titleLabel?.text
-    //            let ourRange : Double! = Double(rangeTextField.text!) ?? 100.0
-    //            let ourDuration : Double! = Double(durationTextField.text!) ?? 60.0
-    //            print("topic : \(String(describing: ourTopic)), range : \(String(describing: ourRange)), duration : \(String(describing: ourDuration)).")
-    //            //MARK: TO DO
-    //            createPublication(topic: ourTopic!, range: ourRange, duration: ourDuration)
-    //        }
-    //        DispatchQueue.main.async {
-    //            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    //            let vc = storyboard.instantiateViewController(withIdentifier: "OfferTableViewController")
-    //            self.show(vc, sender: self)
-    //        }
-    //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -199,8 +163,4 @@ class PublicationViewController: UIViewController, UITextFieldDelegate, UINaviga
             }
         }
     }
-    
-    
-    
-    
 }
