@@ -61,7 +61,8 @@ class OffSubscriptionViewController: UIViewController, UITextFieldDelegate, UINa
         let ourRange : Double! = Double(rangeTextField.text!) ?? 100.0
         let ourDuration : Double! = Double(durationTextField.text!) ?? 60.0
         // Construct the properties
-        let selector = concertTextField.text!
+        let selector = "\(concertLabel.text!) = '\(concertTextField.text!)'"
+        print(selector)
         
         print("topic : \(String(describing: ourTopic)), range : \(String(describing: ourRange)), duration : \(String(describing: ourDuration)), properties : \(String(describing: selector)).")
         createSubscription(topic: ourTopic, range: ourRange, duration: ourDuration, selector: selector)
@@ -76,8 +77,9 @@ class OffSubscriptionViewController: UIViewController, UITextFieldDelegate, UINa
                                                      selector: selector, range: range, duration: duration) {
                                                         (_ subscription) in
                                                         if let s = subscription {
-                                                            print("Created subscription: id = \(String(describing: s.subscriptionId)), topic = \(String(describing: s.topic)), selector = \(String(describing: s.selector))")
+                                                            print("Created subscription: id = \(String(describing: s.subscriptionId!)), topic = \(String(describing: s.topic!)), selector = \(String(describing: s.selector!))")
                                                             self.subscription = s
+                                                            //MARK: LOCATION NIL
                                                             print("\(String(describing: s.location?.altitude))")
                                                             print("\(String(describing: s.location?.latitude))")
                                                             print("\(String(describing: s.location?.longitude))")

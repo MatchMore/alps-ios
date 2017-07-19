@@ -64,10 +64,10 @@ class OffPublicationViewController: UIViewController, UITextFieldDelegate, UINav
         let ourDuration : Double! = Double(durationTextField.text!) ?? 60.0
         // Construct the properties
         var properties = [String: String]()
-        properties[concertLabel.text!] = concertTextField.text!
-        properties[priceLabel.text!] = priceTextField.text!
+        properties[concertLabel.text!] = "'\(concertTextField.text!)'"
+        properties[priceLabel.text!] = "'\(priceTextField.text!)'"
         
-        print("topic : \(String(describing: ourTopic)), range : \(String(describing: ourRange)), duration : \(String(describing: ourDuration)), properties : \(String(describing: properties)).")
+        print("topic : \(String(describing: ourTopic)), range : \(String(describing: ourRange!)), duration : \(String(describing: ourDuration!)), properties : \(String(describing: properties)).")
         createPublication(topic: ourTopic, range: ourRange, duration: ourDuration, properties: properties)
         
     }
@@ -83,7 +83,7 @@ class OffPublicationViewController: UIViewController, UITextFieldDelegate, UINav
                                                         if let p = publication {
                                                             print("Created publication: id = \(String(describing: p.publicationId)), topic = \(String(describing: p.topic)), properties = \(String(describing: p.properties))")
                                                             self.publication = p
-                                                            //MARK: TO DO LOCATION NIL
+                                                            //MARK: LOCATION NIL
                                                             print("\(String(describing: p.location?.latitude))")
                                                             print("\(String(describing: p.location?.longitude))")
                                                         }
