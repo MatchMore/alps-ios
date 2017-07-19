@@ -19,7 +19,7 @@ class MatchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.monitorMatchesWithCompletion { (_ match) in self.addMatch(match: match)}
+//        self.monitorMatchesWithCompletion { (_ match) in self.addMatch(match: match)}
         // Do any additional setup after loading the view.
 
         // Uncomment the following line to preserve selection between presentations
@@ -27,6 +27,15 @@ class MatchTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if appDelegate.userId != nil && appDelegate.deviceId != nil {
+            // call the API, to retrieve all the subscriptions for current user and device
+            getAllMatches()
+        }else{
+            print("ERROR in MATCHESVIEWCONTROLLER: UserId or deviceId is nil.")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,9 +119,8 @@ class MatchTableViewController: UITableViewController {
     // MARK: - Navigation
      
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("our indexPath Row is : \(indexPath.row)")
-        print("our match is : \(String(describing: matches[indexPath.row].matchId))")
-        
+//        print("our indexPath Row is : \(indexPath.row)")
+//        print("our match is : \(String(describing: matches[indexPath.row].matchId))")
      }
      
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -135,6 +143,14 @@ class MatchTableViewController: UITableViewController {
     
     
     //MARK: Update the table view
+    func getAllMatches(){
+        self.appDelegate.alps.getAllMatches() {
+            (_ matches) in
+            self.matches = matches
+            self.tableView.reloadData()
+        }
+    }
+    
     func addMatch(match: Match){
         print("New match ! Added to matches.")
         matches.append(match)

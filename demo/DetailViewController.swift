@@ -12,6 +12,8 @@ import AlpsSDK
 
 class DetailViewController: UIViewController {
 
+    // Using appDelegate as a singleton
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     //MARK: Properties
     
     var publication : Publication?
@@ -28,15 +30,17 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var propertiesLabel: UILabel!
     @IBOutlet weak var labelPropertiesLabel: UILabel!
-    
-    
+    @IBOutlet weak var labelConcertLabel: UILabel!
+    @IBOutlet weak var concertLabel: UILabel!
+    @IBOutlet weak var labelPriceLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let p = publication {
             labelIdLabel.text = "Publication ID :"
-            labelPropertiesLabel.text = "Properties :"
+            labelPropertiesLabel.text = "Properties"
             
             idLabel.text = p.publicationId
             deviceIdLabel.text = p.deviceId
@@ -51,7 +55,7 @@ class DetailViewController: UIViewController {
                 durationLabel.text = String(describing: duration)
             }
             print("loc")
-            if let location = p.location {
+            if let location = self.appDelegate.device?.location {
                 print("In location")
                 if let latitude = location.latitude{
                     print("in latitude")
@@ -61,7 +65,14 @@ class DetailViewController: UIViewController {
                     longitudeLabel.text = String(describing: longitude)}
             }
             if let properties = p.properties{
-                propertiesLabel.text = String(describing: properties)
+                propertiesLabel.text = ""
+                labelPropertiesLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+                labelConcertLabel.isHidden = false
+                concertLabel.text = properties["Concert"]
+                concertLabel.isHidden = false
+                labelPriceLabel.isHidden = false
+                priceLabel.text = properties["Price"]
+                priceLabel.isHidden = false
             }
         }
         
@@ -81,7 +92,7 @@ class DetailViewController: UIViewController {
             if let duration = s.duration{
                 durationLabel.text = String(describing: duration)
             }
-            if let location = s.location {
+            if let location = self.appDelegate.device?.location {
                 if let latitude = location.latitude{
                     latitudeLabel.text = String(describing: latitude)
                 }

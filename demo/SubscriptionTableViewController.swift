@@ -22,10 +22,9 @@ class SubscriptionTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("\(appDelegate.userId) and \(appDelegate.deviceId)")
         if appDelegate.userId != nil && appDelegate.deviceId != nil {
             // call the API, to retrieve all the subscriptions for current user and device
-            loadSubscriptions(userId: self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
+            getAllSubscriptionsForDevice(self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
         }else{
             print("ERROR in SUBSCRIPTIONTABLEVIEWCONTROLLER: UserId or deviceId is nil.")
         }
@@ -108,8 +107,8 @@ class SubscriptionTableViewController: UITableViewController {
     
      // MARK: - Navigation
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         print("our indexPath Row is : \(indexPath.row)")
-         print("our subscription is : \(String(describing: subscriptions[indexPath.row].subscriptionId))")
+//         print("our indexPath Row is : \(indexPath.row)")
+//         print("our subscription is : \(String(describing: subscriptions[indexPath.row].subscriptionId))")
      }
      
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -142,18 +141,11 @@ class SubscriptionTableViewController: UITableViewController {
 //
     }
     
-    //MARK: Private Methods
-    
-    private func loadSubscriptions(userId: String, deviceId: String) {
-        self.getAllSubscriptionsForDevice(userId, deviceId: deviceId)
-    }
-    
     //MARK: SDK func
     func getAllSubscriptionsForDevice(_ userId:String, deviceId: String) {
         self.appDelegate.alps.getAllSubscriptionsForDevice(userId, deviceId: deviceId) {
             (_ subscriptions) in
             self.subscriptions = subscriptions
-            print("\(subscriptions.count) and \(subscriptions.count)")
             self.tableView.reloadData()
         }
     }

@@ -79,10 +79,6 @@ class OffSubscriptionViewController: UIViewController, UITextFieldDelegate, UINa
                                                         if let s = subscription {
                                                             print("Created subscription: id = \(String(describing: s.subscriptionId!)), topic = \(String(describing: s.topic!)), selector = \(String(describing: s.selector!))")
                                                             self.subscription = s
-                                                            //MARK: LOCATION NIL
-                                                            print("\(String(describing: s.location?.altitude))")
-                                                            print("\(String(describing: s.location?.latitude))")
-                                                            print("\(String(describing: s.location?.longitude))")
                                                             
                                                             //                                                            // Arranging the view
                                                             //                                                            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 65))

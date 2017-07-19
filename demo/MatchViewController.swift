@@ -42,7 +42,7 @@ class MatchViewController: UIViewController {
             topicLabel.text = publication.topic
             publicationIdLabel.text = publication.publicationId
             publicationRangeLabel.text = String(describing: publication.range!)
-            publicationPropertiesLabel.text = String(describing: publication.properties!)
+            publicationPropertiesLabel.text = String(describing: publication.properties?["Concert"]!)
         }
         if let subscription = match.subscription{
             subscriptionIdLabel.text = subscription.subscriptionId

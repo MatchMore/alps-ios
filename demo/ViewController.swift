@@ -15,6 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: Properties
     
+    @IBOutlet weak var checkedView: UIView!
     @IBOutlet weak var checkedLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var checkedImage: UIImageView!
@@ -40,9 +41,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        self.checkedView.isHidden = true
         self.alps = appDelegate.alps
-        for i in 1...5 {
+        for _ in 1...5 {
         self.alps.onLocationUpdate(){
             (_ location) in
             if self.incrementBuffer < 5 {
@@ -114,16 +115,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 print(averageAccuracy)
                 loginButton.isEnabled = true
                 accuracyLabel.text = String(describing : averageAccuracy)
-                checkedLabel.text = "Location accuracy checked."
+                checkedLabel.text = "Location accuracy checked"
                 checkedLabel.textColor = UIColor(red:0.263448894023895, green:0.684073209762573, blue:0.294317364692688, alpha:1.0)
-                checkedImage.isHidden = false
+                setView(view: checkedView, hidden: false)
             }else{
                 accuracyLabel.text = String(describing : averageAccuracy)
                 loginButton.isEnabled = false
                 checkedLabel.text = "Checking your location accuracy, wait a moment please."
                 checkedLabel.textColor = UIColor(red: 0.998138010501862, green: 0.392119288444519, blue: 0.320700377225876, alpha: 1.0)
                 checkedLabel.isHidden = false
-                checkedImage.isHidden = true
+                setView(view: checkedView, hidden: true)
             }
         }else{
             accuracyLabel.text = "Calculating..."
@@ -131,7 +132,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             loginButton.isEnabled = false
             checkedLabel.text = "Checking your location accuracy, wait a moment please."
             checkedLabel.textColor = UIColor(red: 0.998138010501862, green: 0.392119288444519, blue: 0.320700377225876, alpha: 1.0)
-            checkedImage.isHidden = true
+            setView(view: checkedView, hidden: true)
         }
     }
     
@@ -190,5 +191,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             (_ location) in
             self.location = location
         }
+    }
+    
+    //MARK: UI Related
+    func setView(view: UIView, hidden: Bool) {
+        UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: { _ in
+            view.isHidden = hidden
+        }, completion: nil)
     }
 }
