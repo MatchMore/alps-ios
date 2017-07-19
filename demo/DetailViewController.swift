@@ -61,19 +61,33 @@ class DetailViewController: UIViewController {
             }
         }
         
-        if subscription != nil {
+        if let s = subscription {
             labelIdLabel.text = "Subscription ID :"
             labelPropertiesLabel.text = "Selector :"
             
-            idLabel.text = subscription?.subscriptionId
-            deviceIdLabel.text = subscription?.deviceId
-            topicLabel.text = subscription?.topic
-            timeStampLabel.text = String(describing: subscription?.timestamp)
-            rangeLabel.text = String(describing: subscription?.range)
-            durationLabel.text = String(describing: subscription?.duration)
-            latitudeLabel.text = String(describing: subscription?.location?.latitude)
-            longitudeLabel.text = String(describing: subscription?.location?.longitude)
-            propertiesLabel.text = String(describing: subscription?.selector)
+            idLabel.text = s.subscriptionId
+            deviceIdLabel.text = s.deviceId
+            topicLabel.text = s.topic
+            if let timestamp = s.timestamp{
+                timeStampLabel.text = String(describing: timestamp)
+            }
+            if let range = s.range{
+                rangeLabel.text = String(describing: range)
+            }
+            if let duration = s.duration{
+                durationLabel.text = String(describing: duration)
+            }
+            if let location = s.location {
+                if let latitude = location.latitude{
+                    latitudeLabel.text = String(describing: latitude)
+                }
+                if let longitude = location.longitude{
+                    longitudeLabel.text = String(describing: longitude)
+                }
+            }
+            if let selector = subscription?.selector{
+                propertiesLabel.text = String(describing: selector)
+            }
         }
     }
 
