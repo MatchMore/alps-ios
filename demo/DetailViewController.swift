@@ -50,11 +50,15 @@ class DetailViewController: UIViewController {
             if let duration = p.duration {
                 durationLabel.text = String(describing: duration)
             }
-            if let location = p.location{
+            print("loc")
+            if let location = p.location {
+                print("In location")
                 if let latitude = location.latitude{
+                    print("in latitude")
+                    print(String(describing: latitude))
                     latitudeLabel.text = String(describing: latitude)}
                 if let longitude = location.longitude{
-                longitudeLabel.text = String(describing: longitude)}
+                    longitudeLabel.text = String(describing: longitude)}
             }
             if let properties = p.properties{
                 propertiesLabel.text = String(describing: properties)

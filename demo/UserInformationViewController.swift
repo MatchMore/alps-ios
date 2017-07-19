@@ -19,8 +19,11 @@ class UserInformationViewController: UIViewController {
     @IBOutlet weak var deviceNameLabel: UILabel!
     @IBOutlet weak var userIdLabel: UILabel!
     @IBOutlet weak var deviceIdLabel: UILabel!
+    @IBOutlet weak var platformLabel: UILabel!
+    @IBOutlet weak var deviceTokenLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
+    
     
     var location : CLLocation?
     
@@ -40,6 +43,14 @@ class UserInformationViewController: UIViewController {
         self.deviceNameLabel.text = appDelegate.deviceName
         self.userIdLabel.text = appDelegate.userId!
         self.deviceIdLabel.text = appDelegate.deviceId!
+        if let d = self.appDelegate.device {
+            self.deviceTokenLabel.text = d.deviceToken!
+            self.platformLabel.text = d.platform!
+        } else {
+            self.deviceTokenLabel.text = "Were not fulfill."
+            self.platformLabel.text = "Were not fulfill."
+        }
+        
         if let l = self.location{
             self.latitudeLabel.text = String(l.coordinate.latitude)
             self.longitudeLabel.text = String(l.coordinate.longitude)

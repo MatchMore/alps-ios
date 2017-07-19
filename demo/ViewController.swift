@@ -169,10 +169,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                                                 return
                                             }
                                             self.appDelegate.deviceId = deviceId
-                                            
-                                            print(self.appDelegate.username)
-                                            print(self.appDelegate.userId!)
-                                            print(self.appDelegate.deviceId!)
                                             completion()
                                         }
                 }

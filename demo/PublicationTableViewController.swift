@@ -69,8 +69,8 @@ class PublicationTableViewController: UITableViewController {
 //        cell.latitudeLabel.text = String(describing: pub.location?.latitude)
 //        cell.longitudeLabel.text = String(describing: pub.location?.longitude)
         cell.topicLabel.text = pub.topic!
-        cell.timeStampLabel.text = String(describing: pub.timestamp)
-        cell.durationLabel.text = String(describing: pub.duration)
+        cell.timeStampLabel.text = String(describing: pub.timestamp!)
+        cell.durationLabel.text = String(describing: pub.duration!)
         
         
         return cell
