@@ -1,8 +1,6 @@
-# Introduction
+# Ticketing App
 
-This repository contains a working demo application of the Matchmore ALPS service.
-
-# Usage
+Ticketing App is a working demo application taking advantage of the [Matchmore](http://dev.matchmore.com/) ALPS service. 
 
 ## Installation
 
@@ -16,7 +14,7 @@ git clone https://github.com/MatchMore/alps-ios
 
 #### Second, install the pods
 
-Go to the folder where you have just cloned the repo and install the Cocoadpods dependecies with the command:
+Go to the folder where you have just cloned the repo and install the [CocoaPods](http://cocoapods.org) dependecies with the command:
 
 ```
 pod install
@@ -44,8 +42,8 @@ let APIKEY = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 
 You may now compile and run the xcode project, enjoy!
 
-# Matchmore iOS SDK
+## Matchmore iOS SDK
 
 This sample project is powered by Matchmore [alps-io-sdk](https://github.com/MatchMore/alps-ios-sdk).
 
-
+Visit us: [Matchmore](http://dev.matchmore.com/)
