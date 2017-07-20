@@ -69,13 +69,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         let userInput = _username.text
         
-        if(userInput == ""){
+        if(_username.text?.isEmpty ?? true){
             return
+        } else {
+            self.appDelegate.username = userInput!
+            self.appDelegate.deviceName = "\(String(describing: self.appDelegate.username))'s device"
+            getLastLocation()
+            DoLogin(self.appDelegate.username)
         }
-        self.appDelegate.username = userInput!
-        self.appDelegate.deviceName = "\(String(describing: self.appDelegate.username))'s device"
-        getLastLocation()
-        DoLogin(self.appDelegate.username)
     }
     
     func DoLogin(_ username: String){
