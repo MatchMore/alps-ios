@@ -20,17 +20,21 @@ Go to the folder where you have just cloned the repo and install the [CocoaPods]
 pod install
 ```
 
-### 2. Create an Application on the portal
+### 2. Generate an API Key
 
-To be able to run this project, you need to have a valid Matchmore Application key. Don't worry, this is a simple process. 
+To be able to run this project, you need to have a valid Matchmore API key. Don't worry, this is a simple process. 
 
-Log in your [Matchmore](http://dev.matchmore.com/) account and [create a new Application](http://dev.matchmore.com/account/apps/). 
+In [Matchmore](http://dev.matchmore.com/), one API Key is provided per registered Application. So [visit your account to create a new Application](http://dev.matchmore.com/account/apps/) (it is free!). 
 
 Once created, your Application will be granted an **api-key**, please copy it.
 
 ### 3. Set your API Key
 
-Open the project workspace `demo.xcworkspace` in [xcode](https://developer.apple.com/xcode/), navigate to the `demo/AppDelegate.swift` file and edit the **APIKEY** constant with the value you have just copied.
+Open the project workspace `demo.xcworkspace` in [xcode](https://developer.apple.com/xcode/), navigate to the `demo/AppDelegate.swift` file and edit the **APIKEY** constant with the value you have just copied:
+
+```
+let APIKEY = ""
+```
 
 After the edit, it should look like this:
 
@@ -40,7 +44,7 @@ let APIKEY = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 
 ### 4. You are good to go! 
 
-You may now compile and run the xcode project, enjoy!
+You may now compile and run the project, enjoy!
 
 ## Matchmore iOS SDK
 
