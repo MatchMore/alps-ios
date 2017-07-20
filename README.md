@@ -22,7 +22,7 @@ Once created, your Application will be granted an *api-key*, please copy it.
 
 ### 3. Set your API Key
 
-Open the workspace `demo.xcworkspace` in [xcode](https://developer.apple.com/xcode/), navigate to the `demo/AppDelegate.swift` file and edit the APIKEY constant *APIKEY* with the value you have just copied.
+Open the workspace `demo.xcworkspace` in [xcode](https://developer.apple.com/xcode/), navigate to the `demo/AppDelegate.swift` file and edit the *APIKEY* constant with the value you have just copied.
 
 After the edit, it should look like this:
 
@@ -32,10 +32,10 @@ let APIKEY = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 
 ### 4. You are good to go! 
 
-You may now compile and run the xcode project
+You may now compile and run the xcode project, enjoy!
 
 ## Matchmore iOS SDK
 
-The Matchmore [alps-io-sdk](https://github.com/MatchMore/alps-ios-sdk) are already included in this project in the `Pods/` directory.
+The Matchmore [alps-io-sdk](https://github.com/MatchMore/alps-ios-sdk) is already included in this demo project in the `Pods/` directory.
 
 
