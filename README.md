@@ -6,10 +6,20 @@ This repository contains a working demo application of the Matchmore ALPS servic
 
 ## Installation
 
-### 1. Clone this repository locally: 
+### 1. Install the project locally: 
+
+#### First, clone the git repo
 
 ```
 git clone https://github.com/MatchMore/alps-ios
+```
+
+#### Second, install the pods
+
+Go to the alps-ios project repostitory on your machine and install the Cocoadpods dependecies with the command:
+
+```
+pod install
 ```
 
 ### 2. Create an Application on the portal
@@ -22,7 +32,7 @@ Once created, your Application will be granted an *api-key*, please copy it.
 
 ### 3. Set your API Key
 
-Open the workspace `demo.xcworkspace` in [xcode](https://developer.apple.com/xcode/), navigate to the `demo/AppDelegate.swift` file and edit the *APIKEY* constant with the value you have just copied.
+Open the project workspace `demo.xcworkspace` in [xcode](https://developer.apple.com/xcode/), navigate to the `demo/AppDelegate.swift` file and edit the *APIKEY* constant with the value you have just copied.
 
 After the edit, it should look like this:
 
@@ -36,6 +46,6 @@ You may now compile and run the xcode project, enjoy!
 
 ## Matchmore iOS SDK
 
-The Matchmore [alps-io-sdk](https://github.com/MatchMore/alps-ios-sdk) is already included in this demo project in the `Pods/` directory.
+This sample project is powered by Matchmore [alps-io-sdk](https://github.com/MatchMore/alps-ios-sdk).
 
 
