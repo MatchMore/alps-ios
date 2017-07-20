@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
             deviceIdLabel.text = p.deviceId
             topicLabel.text = p.topic
             if let timestamp = p.timestamp{
-                timeStampLabel.text = String(describing: timestamp)
+                timeStampLabel.text = transformTimestampToDate(timestamp: timestamp)
             }
             if let range = p.range{
                 rangeLabel.text = String(describing: range)
@@ -84,7 +84,7 @@ class DetailViewController: UIViewController {
             deviceIdLabel.text = s.deviceId
             topicLabel.text = s.topic
             if let timestamp = s.timestamp{
-                timeStampLabel.text = String(describing: timestamp)
+                timeStampLabel.text = transformTimestampToDate(timestamp: timestamp)
             }
             if let range = s.range{
                 rangeLabel.text = String(describing: range)
@@ -109,6 +109,20 @@ class DetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: Helper method
+    func transformTimestampToDate(timestamp : Int64) -> String {
+        let dateTimeStamp = NSDate(timeIntervalSince1970:Double(timestamp)/1000)  //UTC time
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local //Edit
+        dateFormatter.dateFormat = "MMM dd YYYY hh:mm a"
+        dateFormatter.dateStyle = DateFormatter.Style.full
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        let strDateSelect = dateFormatter.string(from: dateTimeStamp as Date)
+        
+        return strDateSelect
     }
     
 

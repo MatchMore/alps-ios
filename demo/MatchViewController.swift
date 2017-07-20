@@ -37,7 +37,7 @@ class MatchViewController: UIViewController {
             return
         }
         matchIdLabel.text = match.matchId
-        timeStampLabel.text = String(describing: match.timestamp!)
+        timeStampLabel.text = transformTimestampToDate(timestamp: match.timestamp!)
         if let publication = match.publication{
             topicLabel.text = publication.topic
             publicationIdLabel.text = publication.publicationId
@@ -57,6 +57,20 @@ class MatchViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Helper method
+    func transformTimestampToDate(timestamp : Int64) -> String {
+        let dateTimeStamp = NSDate(timeIntervalSince1970:Double(timestamp)/1000)  //UTC time
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local //Edit
+        dateFormatter.dateFormat = "MMM dd YYYY hh:mm a"
+        dateFormatter.dateStyle = DateFormatter.Style.full
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        let strDateSelect = dateFormatter.string(from: dateTimeStamp as Date)
+        
+        return strDateSelect
     }
     
 

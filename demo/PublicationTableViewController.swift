@@ -66,10 +66,8 @@ class PublicationTableViewController: UITableViewController {
             fatalError("PublicationTableViewController error : the publication is not from a Publication class.")
         }
         cell.publicationIdLabel.text = pub.publicationId!
-//        cell.latitudeLabel.text = String(describing: pub.location?.latitude)
-//        cell.longitudeLabel.text = String(describing: pub.location?.longitude)
         cell.topicLabel.text = pub.topic!
-        cell.timeStampLabel.text = String(describing: pub.timestamp!)
+        cell.timeStampLabel.text = transformTimestampToDate(timestamp: pub.timestamp!)
         cell.durationLabel.text = String(describing: pub.duration!)
         
         
@@ -134,6 +132,19 @@ class PublicationTableViewController: UITableViewController {
     func publicationAtIndexPath(indexPath: NSIndexPath) -> Publication{
         let publication = publications[indexPath.row]
         return publication
+    }
+    
+    func transformTimestampToDate(timestamp : Int64) -> String {
+        let dateTimeStamp = NSDate(timeIntervalSince1970:Double(timestamp)/1000)  //UTC time
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local //Edit
+        dateFormatter.dateFormat = "MMM dd YYYY hh:mm a"
+        dateFormatter.dateStyle = DateFormatter.Style.full
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        let strDateSelect = dateFormatter.string(from: dateTimeStamp as Date)
+        
+        return strDateSelect
     }
     
     //MARK: Action

@@ -62,7 +62,7 @@ class SubscriptionTableViewController: UITableViewController {
         }
         cell.subscriptionIdLabel.text = sub.subscriptionId!
         cell.durationLabel.text = String(describing: sub.duration!)
-        cell.timeStampLabel.text = String(describing: sub.timestamp!)
+        cell.timeStampLabel.text = transformTimestampToDate(timestamp: sub.timestamp!)
         cell.topicLabel.text = sub.topic!
         
         
@@ -123,10 +123,23 @@ class SubscriptionTableViewController: UITableViewController {
     }
     
      //MARK: HELPER method
-     func subscriptionAtIndexPath(indexPath: NSIndexPath) -> Subscription{
-     let subscription = subscriptions[indexPath.row]
-     return subscription
-     }
+    func subscriptionAtIndexPath(indexPath: NSIndexPath) -> Subscription{
+        let subscription = subscriptions[indexPath.row]
+        return subscription
+    }
+    
+    func transformTimestampToDate(timestamp : Int64) -> String {
+        let dateTimeStamp = NSDate(timeIntervalSince1970:Double(timestamp)/1000)  //UTC time
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local //Edit
+        dateFormatter.dateFormat = "MMM dd YYYY hh:mm a"
+        dateFormatter.dateStyle = DateFormatter.Style.full
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        let strDateSelect = dateFormatter.string(from: dateTimeStamp as Date)
+        
+        return strDateSelect
+    }
  
     //MARK: Action
     @IBAction func unwindToSubscriptionList(sender: UIStoryboardSegue) {

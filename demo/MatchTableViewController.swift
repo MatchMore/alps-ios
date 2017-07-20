@@ -74,7 +74,7 @@ class MatchTableViewController: UITableViewController {
         
         cell.matchIdLabel.text = m.matchId!
         cell.topicLabel.text = m.publication?.topic!
-        cell.timeStampLabel.text = String(describing: m.timestamp!)
+        cell.timeStampLabel.text = transformTimestampToDate(timestamp: m.timestamp!)
         
         
         return cell
@@ -139,6 +139,19 @@ class MatchTableViewController: UITableViewController {
     func matchAtIndexPath(indexPath: NSIndexPath) -> Match{
         let match = matches[indexPath.row]
         return match
+    }
+    
+    func transformTimestampToDate(timestamp : Int64) -> String {
+        let dateTimeStamp = NSDate(timeIntervalSince1970:Double(timestamp)/1000)  //UTC time
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local //Edit
+        dateFormatter.dateFormat = "MMM dd YYYY hh:mm a"
+        dateFormatter.dateStyle = DateFormatter.Style.full
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        let strDateSelect = dateFormatter.string(from: dateTimeStamp as Date)
+        
+        return strDateSelect
     }
     
     
