@@ -14,7 +14,7 @@ import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let APIKEY = "951f96ed-5e57-47a5-8e9a-ad9435c96498" // <- Please provide a valid Matchmore Application Api-key, obtain it for free on dev.matchmore.io, see the README.md file for more informations
+    let APIKEY = "" // <- Please provide a valid Matchmore Application Api-key, obtain it for free on dev.matchmore.io, see the README.md file for more informations
     
 //    let ourLocationManager: CLLocationManager = CLLocationManager()
     var alps: AlpsManager!
