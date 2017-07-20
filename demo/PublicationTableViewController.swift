@@ -12,6 +12,7 @@ import Alps
 class PublicationTableViewController: UITableViewController {
     
     var publications = [Publication]()
+    
     // Using appDelegate as a singleton
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -56,6 +57,7 @@ class PublicationTableViewController: UITableViewController {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "PublicationTableViewCell"
         
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PublicationTableViewCell else{
             fatalError("The dequeued cell is not an instance of PublicationTableViewCell.")
         }
@@ -65,10 +67,24 @@ class PublicationTableViewController: UITableViewController {
         guard let pub = publications[indexPath.row] as? Publication else{
             fatalError("PublicationTableViewController error : the publication is not from a Publication class.")
         }
+//        var timer = Timer()
+//        var counter = pub.duration!
+//        if counter > 0 {
+//            timer = Timer.scheduledTimer(timeInterval: 1, target:counter, selector: (#selector(PublicationTableViewController.updateCounter)), userInfo: nil, repeats: true)
+//        } else {
+//            counter = 0
+//        }
+//        
+//        func updateCounter(){
+//            counter -= 1
+//        }
+        
+        
         cell.publicationIdLabel.text = pub.publicationId!
         cell.topicLabel.text = pub.topic!
         cell.timeStampLabel.text = transformTimestampToDate(timestamp: pub.timestamp!)
         cell.durationLabel.text = String(describing: pub.duration!)
+//        cell.durationLabel.text = "\(counter)/\(String(describing: pub.duration!))"
         
         
         return cell
@@ -146,6 +162,12 @@ class PublicationTableViewController: UITableViewController {
         
         return strDateSelect
     }
+    // TIMER Method
+//    func startTimer(duration : Double, timer : Timer){
+//        
+//    }
+    
+    
     
     //MARK: Action
     @IBAction func unwindToPublicationList(sender: UIStoryboardSegue) {

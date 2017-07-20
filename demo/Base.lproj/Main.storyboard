@@ -927,8 +927,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bIP-5d-k1H">
                                 <rect key="frame" x="20" y="369" width="374" height="25"/>
                                 <subviews>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Concert :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWJ-PB-Oxb">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="25"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Concert :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWJ-PB-Oxb">
+                                        <rect key="frame" x="-20" y="-369" width="0.0" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="WeU-Sx-5G1"/>
                                         </constraints>
@@ -936,8 +936,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRU-7l-9ZQ">
-                                        <rect key="frame" x="128" y="0.0" width="246" height="25"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRU-7l-9ZQ">
+                                        <rect key="frame" x="-20" y="-369" width="0.0" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -950,8 +950,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IXL-Vh-zMA">
                                 <rect key="frame" x="20" y="402" width="374" height="25"/>
                                 <subviews>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbH-Yx-Xqw">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="25"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbH-Yx-Xqw">
+                                        <rect key="frame" x="-20" y="-402" width="0.0" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="lSp-QG-OSn"/>
                                         </constraints>
@@ -959,8 +959,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lM-zG-gRo">
-                                        <rect key="frame" x="128" y="0.0" width="246" height="25"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lM-zG-gRo">
+                                        <rect key="frame" x="-20" y="-402" width="0.0" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1052,7 +1052,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eei-G3-ZMK" id="bMI-yR-Gqn">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SubscriptionId" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="edO-D5-Yn8">
@@ -1387,16 +1387,21 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wY6-g4-0oz">
+                                <rect key="frame" x="20" y="359" width="374" height="320"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Drs-MT-Gct" firstAttribute="centerX" secondItem="T2M-F5-HFT" secondAttribute="centerX" id="0i5-mA-sqd"/>
+                            <constraint firstItem="EdD-fk-CJJ" firstAttribute="top" secondItem="wY6-g4-0oz" secondAttribute="bottom" constant="8" id="8ca-7W-bKI"/>
                             <constraint firstItem="Rlj-Ze-ynR" firstAttribute="centerX" secondItem="T2M-F5-HFT" secondAttribute="centerX" id="9em-QQ-Du7"/>
                             <constraint firstItem="Rlj-Ze-ynR" firstAttribute="top" secondItem="teo-Ii-uDA" secondAttribute="bottom" constant="16" id="BA2-yb-zgm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ICy-2Z-kTy" secondAttribute="trailing" id="Bxs-Cx-X0Y"/>
                             <constraint firstItem="PXN-dN-V5b" firstAttribute="top" secondItem="Rlj-Ze-ynR" secondAttribute="bottom" constant="16" id="IL4-zN-qq1"/>
                             <constraint firstItem="PXN-dN-V5b" firstAttribute="leading" secondItem="T2M-F5-HFT" secondAttribute="leadingMargin" id="JCk-pX-Zuh"/>
                             <constraint firstItem="4sd-EG-YEg" firstAttribute="centerX" secondItem="T2M-F5-HFT" secondAttribute="centerX" id="Ke0-FC-C60"/>
+                            <constraint firstItem="wY6-g4-0oz" firstAttribute="leading" secondItem="T2M-F5-HFT" secondAttribute="leadingMargin" id="NSS-5O-vwg"/>
                             <constraint firstItem="Dvl-8a-WNh" firstAttribute="top" secondItem="PXN-dN-V5b" secondAttribute="bottom" constant="16" id="SP1-eL-e45"/>
                             <constraint firstItem="PXN-dN-V5b" firstAttribute="centerX" secondItem="T2M-F5-HFT" secondAttribute="centerX" id="TtE-xl-48h"/>
                             <constraint firstItem="ICy-2Z-kTy" firstAttribute="top" secondItem="Drs-MT-Gct" secondAttribute="bottom" constant="16" id="UGR-82-csy"/>
@@ -1404,6 +1409,8 @@
                             <constraint firstItem="Dvl-8a-WNh" firstAttribute="leading" secondItem="T2M-F5-HFT" secondAttribute="leadingMargin" id="cgc-8Y-lGD"/>
                             <constraint firstItem="4sd-EG-YEg" firstAttribute="top" secondItem="Dvl-8a-WNh" secondAttribute="bottom" constant="16" id="dIG-9L-pyJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Dvl-8a-WNh" secondAttribute="trailing" id="dwm-AP-IaC"/>
+                            <constraint firstItem="wY6-g4-0oz" firstAttribute="top" secondItem="ICy-2Z-kTy" secondAttribute="bottom" constant="8" id="f6a-F9-3xc"/>
+                            <constraint firstItem="wY6-g4-0oz" firstAttribute="trailing" secondItem="T2M-F5-HFT" secondAttribute="trailingMargin" id="g95-Ab-htX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Drs-MT-Gct" secondAttribute="trailing" id="ibe-WZ-fb4"/>
                             <constraint firstItem="Drs-MT-Gct" firstAttribute="leading" secondItem="T2M-F5-HFT" secondAttribute="leadingMargin" id="kJ8-AF-5p2"/>
                             <constraint firstItem="Dvl-8a-WNh" firstAttribute="centerX" secondItem="T2M-F5-HFT" secondAttribute="centerX" id="kKv-GS-ZhW"/>
@@ -1425,6 +1432,7 @@
                         <outlet property="deviceTokenLabel" destination="gh8-Tb-fkr" id="Mfa-JI-aKQ"/>
                         <outlet property="latitudeLabel" destination="snV-OM-UAN" id="mp1-w6-t8y"/>
                         <outlet property="longitudeLabel" destination="wdv-ZV-Br6" id="QeX-E2-qAw"/>
+                        <outlet property="mapV" destination="wY6-g4-0oz" id="434-2M-jAu"/>
                         <outlet property="platformLabel" destination="6XH-Bh-sWp" id="fib-ub-NtO"/>
                         <outlet property="userIdLabel" destination="nFN-GY-Kac" id="lba-Bf-obt"/>
                         <outlet property="usernameLabel" destination="g9k-QV-oYI" id="Emt-bu-BIE"/>

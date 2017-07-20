@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class UserInformationViewController: UIViewController {
 
@@ -23,9 +24,7 @@ class UserInformationViewController: UIViewController {
     @IBOutlet weak var deviceTokenLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
-//    @IBOutlet weak var lastLocationView: UIView!
-//    @IBOutlet weak var deviceIdView: UIView!
-//    @IBOutlet weak var userIdView: UIView!
+    @IBOutlet weak var mapV: MKMapView!
     
     
     
@@ -34,7 +33,7 @@ class UserInformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mapV.showsUserLocation = true
 
         // Do any additional setup after loading the view.
     }
@@ -73,6 +72,24 @@ class UserInformationViewController: UIViewController {
         }else{
             self.latitudeLabel.text = "Locating..."
             self.longitudeLabel.text = "Please reload this view."
+        }
+        
+        if self.location != nil{
+            // 1)
+            mapV.mapType = MKMapType.standard
+            
+            // 2)
+            
+            // 3)
+            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let region = MKCoordinateRegion(center: (self.location?.coordinate)!, span: span)
+            mapV.setRegion(region, animated: true)
+            
+            // 4)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = (self.location?.coordinate)!
+            annotation.title = "Your current location"
+            mapV.addAnnotation(annotation)
         }
     }
 
