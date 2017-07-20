@@ -21,6 +21,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var checkedImage: UIImageView!
     @IBOutlet weak var _username: UITextField!
     @IBOutlet weak var accuracyLabel: UILabel!
+    @IBOutlet weak var usernameErrorLabel: UILabel!
     
     // Using appDelegate as a singleton
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -40,21 +41,41 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Ask for location permission
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        switch authorizationStatus{
+        case .authorizedWhenInUse:
+            print("Location is authorized")
+            break
+        case .authorizedAlways:
+            print("Location is authorized")
+            break
+        case .denied :
+            self.appDelegate.locationManager.requestWhenInUseAuthorization()
+            break
+        case .notDetermined:
+            self.appDelegate.locationManager.requestWhenInUseAuthorization()
+            break
+        case .restricted :
+            self.appDelegate.locationManager.requestWhenInUseAuthorization()
+            break
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
         self.checkedView.isHidden = true
         self.alps = appDelegate.alps
         for _ in 1...5 {
-        self.alps.onLocationUpdate(){
-            (_ location) in
-            if self.incrementBuffer < 5 {
-                self.locationBuffer.append(location)
-                self.incrementBuffer += 1
-            }else{
-                self.locationBuffer[self.incrementBuffer % 5] = location
-                self.incrementBuffer += 1
+            self.alps.onLocationUpdate(){
+                (_ location) in
+                if self.incrementBuffer < 5 {
+                    self.locationBuffer.append(location)
+                    self.incrementBuffer += 1
+                }else{
+                    self.locationBuffer[self.incrementBuffer % 5] = location
+                    self.incrementBuffer += 1
+                }
+                self.verifyAccuracy()
             }
-            self.verifyAccuracy()
-        }
         }
     }
     
@@ -70,12 +91,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let userInput = _username.text
         
         if(_username.text?.isEmpty ?? true){
-            return
+            usernameErrorLabel.textColor = UIColor(red: 0.998138010501862, green: 0.392119288444519, blue: 0.320700377225876, alpha: 1.0)
+            usernameErrorLabel.isHidden = false
         } else {
             self.appDelegate.username = userInput!
             self.appDelegate.deviceName = "\(String(describing: self.appDelegate.username))'s device"
             getLastLocation()
             DoLogin(self.appDelegate.username)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+            vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            self.present(vc, animated: true, completion: nil)
         }
     }
     

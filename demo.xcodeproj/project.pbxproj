@@ -328,7 +328,7 @@
 				TargetAttributes = {
 					843CEEB31F166DA600BD074E = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 2UJM6Q65K9;
+						DevelopmentTeam = 675TP2643A;
 						ProvisioningStyle = Automatic;
 					};
 					843CEEC71F166DA600BD074E = {
@@ -710,7 +710,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2UJM6Q65K9;
+				DEVELOPMENT_TEAM = 675TP2643A;
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = doplab.demo;
@@ -725,7 +725,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2UJM6Q65K9;
+				DEVELOPMENT_TEAM = 675TP2643A;
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = doplab.demo;
