@@ -14,7 +14,7 @@ import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let APIKEY = "951f96ed-5e57-47a5-8e9a-ad9435c96498" // <- Please provide a valid Matchmore Application Api-key, obtain it for free on dev.matchmore.io
+    let APIKEY = "951f96ed-5e57-47a5-8e9a-ad9435c96498" // <- Please provide a valid Matchmore Application Api-key, obtain it for free on dev.matchmore.io, see the README.md file for more informations
     
 //    let ourLocationManager: CLLocationManager = CLLocationManager()
     var alps: AlpsManager!
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         if APIKEY.isEmpty {
-            fatalError("To build the project, you NEED an APIKEY which is provided in the matchmore portal. Follow this link for more informations : dev.matchmore.com")
+            fatalError("To run this project, please provide a valid Matchmore Application Api-key. Obtain it for free on dev.matchmore.io, see the README.md file for more informations)
         }else{
             alps = AlpsManager(apiKey: APIKEY, clLocationManager : locationManager)
         }
