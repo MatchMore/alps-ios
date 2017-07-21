@@ -42,10 +42,14 @@ class UserInformationViewController: UIViewController {
             self.location = location
         }
         // Set view
+        guard let userId = appDelegate.userId, let deviceId = appDelegate.deviceId else{
+            print("ERROR in UserInformationViewController : nil value.")
+            return
+        }
         self.usernameLabel.text = appDelegate.username
         self.deviceNameLabel.text = appDelegate.deviceName
-        self.userIdLabel.text = appDelegate.userId!
-        self.deviceIdLabel.text = appDelegate.deviceId!
+        self.userIdLabel.text = userId
+        self.deviceIdLabel.text = deviceId
         if let d = self.appDelegate.device {
             self.deviceTokenLabel.text = d.deviceToken!
             self.platformLabel.text = d.platform!

@@ -30,11 +30,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var deviceName : String?
     
     // Location information
-    var lat : Double!
-    var longit : Double!
-    var alt : Double!
-    var horiztonalAcc : Double!
-    var verticalAcc : Double!
+    var latitude : Double!
+    var longitude : Double!
+    var altitude : Double!
+    var horizontalAccuracy : Double!
+    var verticalAccuracy : Double!
     var incrementBuffer : Int = 0
     var location : CLLocation?
     
@@ -42,6 +42,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginButton.isEnabled = false
         // Ask for location permission
         // You might need to add "Privacy - Location Always Usage Description" and "Privacy - Location When In Use Usage Description" in your Info.plist file.
         let authorizationStatus = CLLocationManager.authorizationStatus()
@@ -121,12 +122,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // Store the last location's data for latter use
     func getLastLocation(){
         if let location = self.appDelegate.locationBuffer.last{
-            self.lat = (location.coordinate.latitude)
-            self.longit = (location.coordinate.longitude)
-            self.alt = (location.altitude)
-            self.horiztonalAcc = (location.horizontalAccuracy)
-            self.verticalAcc = (location.verticalAccuracy)
-            print("Your location is updated as follow : \(String(describing: lat!)), \(String(describing: longit!)), \(String(describing: alt!)), \(String(describing: horiztonalAcc!)), \(String(describing: verticalAcc!)).")
+            self.latitude = (location.coordinate.latitude)
+            self.longitude = (location.coordinate.longitude)
+            self.altitude = (location.altitude)
+            self.horizontalAccuracy = (location.horizontalAccuracy)
+            self.verticalAccuracy = (location.verticalAccuracy)
+            print("Your location is updated as follow : \(String(describing: latitude!)), \(String(describing: longitude!)), \(String(describing: altitude!)), \(String(describing: horizontalAccuracy!)), \(String(describing: verticalAccuracy!)).")
             loginButton.isHidden = false
         }else{
             print("UNFOUND LocationManager.")
@@ -142,7 +143,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 sumAccuracy += l.horizontalAccuracy
             }
             averageAccuracy = sumAccuracy/5
-            if averageAccuracy <= 100 {
+            if averageAccuracy <= 1000 {
                 loginButton.isEnabled = true
                 accuracyLabel.text = String(describing : averageAccuracy)
                 checkedLabel.text = "Location accuracy checked"
@@ -190,23 +191,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 /*
                  * platform value and deviceToken are hard coded, change it in order to get real values.
                  */
+                guard let latitude = self.latitude, let longitude = self.longitude, let altitude = self.altitude, let horizontalAccuracy = self.horizontalAccuracy, let verticalAccuracy = self.verticalAccuracy else{
+                    print("ERROR : No location provided.")
+                    return
+                }
+                
                 self.alps.createDevice(name: self.appDelegate.deviceName, platform: "iOS 10.2",
                                        deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
-                                       latitude: self.lat, longitude: self.longit, altitude: self.alt,
-                                       horizontalAccuracy: self.horiztonalAcc, verticalAccuracy: self.verticalAcc) {
+                                       latitude: latitude, longitude: longitude, altitude: altitude,
+                                       horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy) {
                                         (_ device) in
                                         if let d = device {
-                                            print("Created device: id = \(String(describing: d.deviceId!)), name = \(String(describing: d.name!))")
-                                            self.appDelegate.device = d
-                                            
                                             guard let deviceId = d.deviceId else{
                                                 print("ERROR : No deviceId found.")
                                                 return
                                             }
+                                            guard let name = d.name else{
+                                                print("ERROR : No device name found.")
+                                                return
+                                            }
+                                            
+                                            print("Created device: id = \(String(describing: deviceId)), name = \(String(describing: name))")
+                                            self.appDelegate.device = d
                                             self.appDelegate.deviceId = deviceId
                                             completion()
                                         }
-                }
+                                    }
             }
         }
     }
