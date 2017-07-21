@@ -14,18 +14,25 @@ import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK: TO DO
     let APIKEY = "" // <- Please provide a valid Matchmore Application Api-key, obtain it for free on dev.matchmore.io, see the README.md file for more informations
     
-//    let ourLocationManager: CLLocationManager = CLLocationManager()
+    // MARK: Properties
+    // AlpsManager is the SDK core class that will communicate with the API Alps, which will then communicate with Matchmore services
     var alps: AlpsManager!
+    // In short, it will manage all the related calls with the device location. To learn more about CLLocationManager please refers to CoreLocation Documentation
+    var locationManager = CLLocationManager()
+    // UUID identifier given by Matchmore to identify users
     var userId : String?
+    // UUID identifier given by Matchmore to identify devices
     var deviceId : String?
+    var device : Device?
+    
+    // MARK: User input
     var username = ""
     var deviceName = ""
-    var device : Device?
     var location : CLLocation?
-    var locationManager = CLLocationManager()
-    
+    var locationBuffer = [CLLocation]()
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -62,6 +69,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // SDK Method
+    
+    /*
+     *  This method will get the device location and store it in the appDelegate. This method is continually called, which means that var location in appDelegate is constantly the last position of the device.
+     */
     func onLocationUpdate() {
         alps.onLocationUpdate() {
             (_ location) in

@@ -35,9 +35,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var alt : Double!
     var horiztonalAcc : Double!
     var verticalAcc : Double!
-    var locationBuffer = [CLLocation]()
     var incrementBuffer : Int = 0
     var location : CLLocation?
+    
+    // MARK : View functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,14 +65,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         self.checkedView.isHidden = true
         self.alps = appDelegate.alps
+        
+        // Check that the device location's horizontal accuracy is under a threshold, before letting the user connects.
         for _ in 1...5 {
             self.alps.onLocationUpdate(){
                 (_ location) in
                 if self.incrementBuffer < 5 {
-                    self.locationBuffer.append(location)
+                    self.appDelegate.locationBuffer.append(location)
                     self.incrementBuffer += 1
                 }else{
-                    self.locationBuffer[self.incrementBuffer % 5] = location
+                    self.appDelegate.locationBuffer[self.incrementBuffer % 5] = location
                     self.incrementBuffer += 1
                 }
                 self.verifyAccuracy()
@@ -86,6 +89,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: LOGIN FUNCTION
 
+    /*
+     *  Do some verifications after the user pressed the login UIButton.
+     */
     @IBAction func LoginButton(_ sender: Any) {
         
         let userInput = _username.text
@@ -105,18 +111,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Calls the functions that will create the user and the device in Matchmore
     func DoLogin(_ username: String){
         createDevice(username: username) {
         }
-        LoginIsDone()
     }
     
-    func LoginIsDone(){
-        _username.isEnabled = false
-    }
-    
+    // Store the last location's data for latter use
     func getLastLocation(){
-        if let location = locationBuffer.last{
+        if let location = self.appDelegate.locationBuffer.last{
             self.lat = (location.coordinate.latitude)
             self.longit = (location.coordinate.longitude)
             self.alt = (location.altitude)
@@ -129,11 +132,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Verify that average horizontal accuracy of last 5 locations is under a threshold
     func verifyAccuracy(){
-        if locationBuffer.count == 5 {
+        if self.appDelegate.locationBuffer.count == 5 {
             var averageAccuracy : Double = 0.0
             var sumAccuracy : Double = 0.0
-            for l in locationBuffer{
+            for l in self.appDelegate.locationBuffer{
                 sumAccuracy += l.horizontalAccuracy
             }
             averageAccuracy = sumAccuracy/5
@@ -163,6 +167,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: SDK SCALPS METHOD
     
+    // Calls Matchmore to create the user and device
     func createDevice(username : String, completion: @escaping () -> Void) {
         alps.createUser(self.appDelegate.username) {
             (_ user) in
@@ -181,6 +186,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
                 self.appDelegate.username = username
                 
+                /*
+                 * platform value and deviceToken are hard coded, change it in order to get real values.
+                 */
                 self.alps.createDevice(name: self.appDelegate.deviceName, platform: "iOS 10.2",
                                        deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
                                        latitude: self.lat, longitude: self.longit, altitude: self.alt,
@@ -202,15 +210,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Start the match service
     func monitorMatches() {
         alps.startMonitoringMatches()
     }
     
+    // Get the match
     func monitorMatchesWithCompletion(completion: @escaping (_ match: Match) -> Void) {
         alps.onMatch(completion: completion)
         alps.startMonitoringMatches()
     }
     
+    /*
+     *  This method will get the device location and store it in the appDelegate. This method is continually called, which means that var location in appDelegate is constantly the last position of the device.
+     */
     func onLocationUpdate() {
         alps.onLocationUpdate() {
             (_ location) in
