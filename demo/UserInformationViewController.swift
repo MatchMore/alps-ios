@@ -26,34 +26,22 @@ class UserInformationViewController: UIViewController {
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var mapV: MKMapView!
     
-    
-    
     var location : CLLocation?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Shows the user location in UIMapView
         mapV.showsUserLocation = true
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        // Making rounded corner for view
-//        lastLocationView.layer.cornerRadius = 5;
-//        lastLocationView.layer.masksToBounds = true;
-//        lastLocationView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
-//        deviceIdView.layer.cornerRadius = 5;
-//        deviceIdView.layer.masksToBounds = true;
-//        deviceIdView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
-//        userIdView.layer.cornerRadius = 5;
-//        userIdView.layer.masksToBounds = true;
-//        userIdView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
-        
+        // Get user's location
         self.appDelegate.alps.onLocationUpdate(){
             (_ location) in
             self.location = location
         }
+        // Set view
         self.usernameLabel.text = appDelegate.username
         self.deviceNameLabel.text = appDelegate.deviceName
         self.userIdLabel.text = appDelegate.userId!
@@ -75,17 +63,10 @@ class UserInformationViewController: UIViewController {
         }
         
         if self.location != nil{
-            // 1)
             mapV.mapType = MKMapType.standard
-            
-            // 2)
-            
-            // 3)
             let span = MKCoordinateSpanMake(0.05, 0.05)
             let region = MKCoordinateRegion(center: (self.location?.coordinate)!, span: span)
             mapV.setRegion(region, animated: true)
-            
-            // 4)
             let annotation = MKPointAnnotation()
             annotation.coordinate = (self.location?.coordinate)!
             annotation.title = "Your current location"

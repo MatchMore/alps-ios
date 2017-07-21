@@ -42,11 +42,12 @@ class OffSubscriptionViewController: UIViewController, UITextFieldDelegate, UINa
     
     // MARK: - Navigation
     
-    // This method lets you configure a view controller before it's presented.
+    // Cancels the add of a new subscription
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
+    // Triggers when publishButton is pressed
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
@@ -69,7 +70,9 @@ class OffSubscriptionViewController: UIViewController, UITextFieldDelegate, UINa
         
     }
     
-    //MARK: SDK function
+    //MARK: AlpsSDK Functions
+    
+    // Calls The AlpsSDK to create a subscription
     func createSubscription(topic: String, range: Double, duration: Double, selector: String){
         if self.appDelegate.device != nil {
             
@@ -79,23 +82,6 @@ class OffSubscriptionViewController: UIViewController, UITextFieldDelegate, UINa
                                                         if let s = subscription {
                                                             print("Created subscription: id = \(String(describing: s.subscriptionId!)), topic = \(String(describing: s.topic!)), selector = \(String(describing: s.selector!))")
                                                             self.subscription = s
-                                                            
-                                                            //                                                            // Arranging the view
-                                                            //                                                            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 65))
-                                                            //
-                                                            //                                                            label.textAlignment = .center
-                                                            //                                                            label.textColor = UIColor.white
-                                                            //                                                            if let tValues = s.topic{
-                                                            //                                                                label.text = "\(tValues)"
-                                                            //                                                            }
-                                                            //
-                                                            //                                                            let view1 = UIView()
-                                                            //                                                            view1.backgroundColor = UIColor(red:0.22, green:0.66, blue:0.81, alpha:1.0)
-                                                            //                                                            view1.heightAnchor.constraint(equalToConstant: 65).isActive = true
-                                                            //                                                            view1.widthAnchor.constraint(equalToConstant: 100).isActive = true
-                                                            //                                                            view1.addSubview(label)
-                                                            //                                                            label.frame.origin = CGPoint(x: view1.frame.width / 2, y: view1.frame.height / 2)
-                                                            //                                                            self.topicSubscribedStack.addArrangedSubview(view1)
                                                         }
             }
         }

@@ -38,6 +38,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // MARK : View settings
         if let p = publication {
             labelIdLabel.text = "Publication ID :"
             labelPropertiesLabel.text = "Properties"
@@ -112,6 +113,8 @@ class DetailViewController: UIViewController {
     }
     
     //MARK: Helper method
+    
+    // Use this function to transform timestamp to local date displayed in String
     func transformTimestampToDate(timestamp : Int64) -> String {
         let dateTimeStamp = NSDate(timeIntervalSince1970:Double(timestamp)/1000)  //UTC time
         

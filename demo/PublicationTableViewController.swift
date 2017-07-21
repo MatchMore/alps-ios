@@ -10,7 +10,9 @@ import AlpsSDK
 import Alps
 
 class PublicationTableViewController: UITableViewController {
+    // MARK: Properties
     
+    // An array that contains all the user's device publications
     var publications = [Publication]()
     
     // Using appDelegate as a singleton
@@ -29,7 +31,7 @@ class PublicationTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         if self.appDelegate.userId != nil && self.appDelegate.deviceId != nil {
             // call the API, to retrieve all the subscriptions for current user and device
-            loadPublications(userId: self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
+            getAllPublicationsForDevice(self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
         }else{
             print("ERROR in PUBLICATIONTABLEVIEWCONTROLLER: UserId or deviceId is nil.")
         }
@@ -56,36 +58,19 @@ class PublicationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "PublicationTableViewCell"
-        
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PublicationTableViewCell else{
             fatalError("The dequeued cell is not an instance of PublicationTableViewCell.")
         }
         
         // Configure the cell...
-        
         guard let pub = publications[indexPath.row] as? Publication else{
             fatalError("PublicationTableViewController error : the publication is not from a Publication class.")
         }
-//        var timer = Timer()
-//        var counter = pub.duration!
-//        if counter > 0 {
-//            timer = Timer.scheduledTimer(timeInterval: 1, target:counter, selector: (#selector(PublicationTableViewController.updateCounter)), userInfo: nil, repeats: true)
-//        } else {
-//            counter = 0
-//        }
-//        
-//        func updateCounter(){
-//            counter -= 1
-//        }
-        
         
         cell.publicationIdLabel.text = pub.publicationId!
         cell.topicLabel.text = pub.topic!
         cell.timeStampLabel.text = transformTimestampToDate(timestamp: pub.timestamp!)
         cell.durationLabel.text = String(describing: pub.duration!)
-//        cell.durationLabel.text = "\(counter)/\(String(describing: pub.duration!))"
-        
         
         return cell
     }
@@ -128,8 +113,6 @@ class PublicationTableViewController: UITableViewController {
      // MARK: - Navigation
      
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     print("our indexPath Row is : \(indexPath.row)")
-     print("our publication is : \(String(describing: publications[indexPath.row].publicationId))")
      }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -145,11 +128,14 @@ class PublicationTableViewController: UITableViewController {
     }
     
     //MARK: HELPER method
+    
+    // Get the publication at index in publications array
     func publicationAtIndexPath(indexPath: NSIndexPath) -> Publication{
         let publication = publications[indexPath.row]
         return publication
     }
     
+    // Use this function to transform timestampe to local date displayed in String
     func transformTimestampToDate(timestamp : Int64) -> String {
         let dateTimeStamp = NSDate(timeIntervalSince1970:Double(timestamp)/1000)  //UTC time
         
@@ -162,33 +148,13 @@ class PublicationTableViewController: UITableViewController {
         
         return strDateSelect
     }
-    // TIMER Method
-//    func startTimer(duration : Double, timer : Timer){
-//        
-//    }
-    
-    
-    
     //MARK: Action
     @IBAction func unwindToPublicationList(sender: UIStoryboardSegue) {
-//        if let sourceViewController = sender.source as? PublicationViewController, let publication = sourceViewController.publication {
-//            
-//            // Add a new publication.
-//            let newIndexPath = IndexPath(row: publications.count, section: 0)
-//            
-//            publications.append(publication)
-//            tableView.insertRows(at: [newIndexPath], with: .automatic)
-//        }
-//        
     }
     
-    //MARK: Private Methods
+    //MARK: AlpsSDK Functions
     
-    private func loadPublications(userId: String, deviceId: String) {
-        self.getAllPublicationsForDevice(userId, deviceId: deviceId)
-    }
-    //MARK: SDK Functions
-    
+    // Calls the SDK to get all publications for specified userId and deviceId
     func getAllPublicationsForDevice(_ userId:String, deviceId: String) {
         self.appDelegate.alps.getAllPublicationsForDevice(userId, deviceId: deviceId) {
             (_ publications) in

@@ -12,6 +12,8 @@ import Alps
 
 class SubscriptionTableViewController: UITableViewController {
     
+    // MARK: Properties
+    // An array that contains all the user's device subscriptions
     var subscriptions = [Subscription]()
     // Using appDelegate as a singleton
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -48,24 +50,20 @@ class SubscriptionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "SubscriptionTableViewCell"
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? SubscriptionTableViewCell else{
             fatalError("The dequeued cell is not an instance of OfferTableViewCell.")
         }
         
         // Configure the cell...
-        
         guard let sub = subscriptions[indexPath.row] as? Subscription else{
             fatalError("SubscriptionTableViewController error : the subscription is not from a Subscription class.")
         }
+        
         cell.subscriptionIdLabel.text = sub.subscriptionId!
         cell.durationLabel.text = String(describing: sub.duration!)
         cell.timeStampLabel.text = transformTimestampToDate(timestamp: sub.timestamp!)
         cell.topicLabel.text = sub.topic!
-        
-        
         return cell
     }
     
@@ -107,8 +105,6 @@ class SubscriptionTableViewController: UITableViewController {
     
      // MARK: - Navigation
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//         print("our indexPath Row is : \(indexPath.row)")
-//         print("our subscription is : \(String(describing: subscriptions[indexPath.row].subscriptionId))")
      }
      
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,11 +119,14 @@ class SubscriptionTableViewController: UITableViewController {
     }
     
      //MARK: HELPER method
+    
+    // Get the subscription at index in subscriptions array
     func subscriptionAtIndexPath(indexPath: NSIndexPath) -> Subscription{
         let subscription = subscriptions[indexPath.row]
         return subscription
     }
     
+    // Use this function to transform timestampe to local date displayed in String
     func transformTimestampToDate(timestamp : Int64) -> String {
         let dateTimeStamp = NSDate(timeIntervalSince1970:Double(timestamp)/1000)  //UTC time
         
@@ -142,19 +141,13 @@ class SubscriptionTableViewController: UITableViewController {
     }
  
     //MARK: Action
+    
     @IBAction func unwindToSubscriptionList(sender: UIStoryboardSegue) {
-//        if let sourceViewController = sender.source as? SubscriptionViewController, let subscription = sourceViewController.subscription {
-//            
-//            // Add a new publication.
-//            let newIndexPath = IndexPath(row: subscriptions.count, section: 0)
-//            
-//            subscriptions.append(subscription)
-//            tableView.insertRows(at: [newIndexPath], with: .automatic)
-//        }
-//
     }
     
-    //MARK: SDK func
+    //MARK: AlpsSDK Functions
+    
+    // Calls the SDK to get all subscriptions for specified userId and deviceId
     func getAllSubscriptionsForDevice(_ userId:String, deviceId: String) {
         self.appDelegate.alps.getAllSubscriptionsForDevice(userId, deviceId: deviceId) {
             (_ subscriptions) in

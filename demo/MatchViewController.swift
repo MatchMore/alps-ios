@@ -32,6 +32,7 @@ class MatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Sets the view and shows selected match informations
         guard let match = self.match else{
             print("ERROR in MatchViewController : match not found.")
             return
@@ -60,6 +61,8 @@ class MatchViewController: UIViewController {
     }
     
     // MARK: Helper method
+    
+    // Use this function to transform timestampe to local date in String
     func transformTimestampToDate(timestamp : Int64) -> String {
         let dateTimeStamp = NSDate(timeIntervalSince1970:Double(timestamp)/1000)  //UTC time
         

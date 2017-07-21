@@ -14,15 +14,16 @@ class MatchTableViewController: UITableViewController {
 
     // Using appDelegate as a singleton
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    // An array that contains all the user's device match
     var matches = [Match]()
     var notificationCounter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // This function will be called everytime there is a match.
         self.monitorMatchesWithCompletion { (_ match) in self.notificationOnMatch(match: match)}
 
-//        self.monitorMatchesWithCompletion { (_ match) in self.addMatch(match: match)}
         // Do any additional setup after loading the view.
 
         // Uncomment the following line to preserve selection between presentations
@@ -123,8 +124,6 @@ class MatchTableViewController: UITableViewController {
     // MARK: - Navigation
      
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("our indexPath Row is : \(indexPath.row)")
-//        print("our match is : \(String(describing: matches[indexPath.row].matchId))")
      }
      
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -140,11 +139,14 @@ class MatchTableViewController: UITableViewController {
     }
     
     //MARK: HELPER method
+    
+    // Get the match at index in matches array
     func matchAtIndexPath(indexPath: NSIndexPath) -> Match{
         let match = matches[indexPath.row]
         return match
     }
     
+    // Use this function to transform timestampe to local date displayed in String
     func transformTimestampToDate(timestamp : Int64) -> String {
         let dateTimeStamp = NSDate(timeIntervalSince1970:Double(timestamp)/1000)  //UTC time
         
@@ -159,14 +161,9 @@ class MatchTableViewController: UITableViewController {
     }
     
     
-    //MARK: Update the table view
-    func getAllMatches(){
-        self.appDelegate.alps.getAllMatches() {
-            (_ matches) in
-            self.matches = matches
-            self.tableView.reloadData()
-        }
-    }
+    //MARK: Notification related
+    
+    // Shows notifications on match
     func notificationOnMatch(match: Match){
         notificationCounter += 1
         tabBarController?.tabBar.items?[0].badgeValue = String(describing: notificationCounter)
@@ -177,27 +174,32 @@ class MatchTableViewController: UITableViewController {
         self.present(alert, animated: true)
     }
     
+    // Resets the TabBar Item badge value
     func resetNotificationOnMatch(){
         notificationCounter = 0
         tabBarController?.tabBar.items?[0].badgeValue = nil
     }
     
-    func addMatch(match: Match){
-        print("New match ! Added to matches.")
-        matches.append(match)
-        self.tableView.reloadData()
-    }
+    //MARK: AlpsSDK functions
     
-    //MARK: Match methods
-    
+    // Start the match service
     func monitorMatches() {
         self.appDelegate.alps.startMonitoringMatches()
     }
     
+    // Get the match
     func monitorMatchesWithCompletion(completion: @escaping (_ match: Match) -> Void) {
         self.appDelegate.alps.onMatch(completion: completion)
         self.appDelegate.alps.startMonitoringMatches()
     }
 
+    // Calls the SDK to get all matches for actual userId and deviceId
+    func getAllMatches(){
+        self.appDelegate.alps.getAllMatches() {
+            (_ matches) in
+            self.matches = matches
+            self.tableView.reloadData()
+        }
+    }
 
 }

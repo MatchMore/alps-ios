@@ -43,6 +43,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Ask for location permission
+        // You might need to add "Privacy - Location Always Usage Description" and "Privacy - Location When In Use Usage Description" in your Info.plist file.
         let authorizationStatus = CLLocationManager.authorizationStatus()
         switch authorizationStatus{
         case .authorizedWhenInUse:
@@ -165,7 +166,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    //MARK: SDK SCALPS METHOD
+    //MARK: AlpsSDK functions
     
     // Calls Matchmore to create the user and device
     func createDevice(username : String, completion: @escaping () -> Void) {
@@ -232,6 +233,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     //MARK: UI Related
+    
     func setView(view: UIView, hidden: Bool) {
         UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: { _ in
             view.isHidden = hidden
