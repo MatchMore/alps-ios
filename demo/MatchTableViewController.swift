@@ -15,10 +15,13 @@ class MatchTableViewController: UITableViewController {
     // Using appDelegate as a singleton
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var matches = [Match]()
+    var notificationCounter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.monitorMatchesWithCompletion { (_ match) in self.notificationOnMatch(match: match)}
+
 //        self.monitorMatchesWithCompletion { (_ match) in self.addMatch(match: match)}
         // Do any additional setup after loading the view.
 
@@ -33,6 +36,7 @@ class MatchTableViewController: UITableViewController {
         if appDelegate.userId != nil && appDelegate.deviceId != nil {
             // call the API, to retrieve all the subscriptions for current user and device
             getAllMatches()
+            self.resetNotificationOnMatch()
         }else{
             print("ERROR in MATCHESVIEWCONTROLLER: UserId or deviceId is nil.")
         }
@@ -162,6 +166,20 @@ class MatchTableViewController: UITableViewController {
             self.matches = matches
             self.tableView.reloadData()
         }
+    }
+    func notificationOnMatch(match: Match){
+        notificationCounter += 1
+        tabBarController?.tabBar.items?[0].badgeValue = String(describing: notificationCounter)
+        let topic = match.publication?.topic
+        let selector = match.subscription?.selector
+        let alert = UIAlertController(title: "New match !", message: "Topic : \(String(describing: topic!))\nSelector : \(String(describing: selector!))", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Understood", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func resetNotificationOnMatch(){
+        notificationCounter = 0
+        tabBarController?.tabBar.items?[0].badgeValue = nil
     }
     
     func addMatch(match: Match){
