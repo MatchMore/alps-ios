@@ -15,7 +15,7 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: TO DO
-    let APIKEY = "" // <- Please provide a valid Matchmore Application Api-key, obtain it for free on dev.matchmore.io, see the README.md file for more informations
+    let APIKEY = "74fb34af-f128-49e0-97e2-4b4413c06058" // <- Please provide a valid Matchmore Application Api-key, obtain it for free on dev.matchmore.io, see the README.md file for more informations
     
     // MARK: Properties
     // AlpsManager is the SDK core class that will communicate with the API Alps, which will then communicate with Matchmore services
