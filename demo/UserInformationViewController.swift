@@ -37,9 +37,13 @@ class UserInformationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         // Get user's location
-        self.appDelegate.alps.onLocationUpdate(){
-            (_ location) in
-            self.location = location
+        if let ourLocation = self.appDelegate.location{
+            self.location = ourLocation
+        } else {
+            self.appDelegate.alps.onLocationUpdate(){
+                (_ location) in
+                self.location = location
+            }
         }
         // Set view
         guard let userId = appDelegate.userId, let deviceId = appDelegate.deviceId else{
@@ -71,10 +75,12 @@ class UserInformationViewController: UIViewController {
             let span = MKCoordinateSpanMake(0.05, 0.05)
             let region = MKCoordinateRegion(center: (self.location?.coordinate)!, span: span)
             mapV.setRegion(region, animated: true)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = (self.location?.coordinate)!
-            annotation.title = "Your current location"
-            mapV.addAnnotation(annotation)
+            
+            // Add a pin to your current location
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = (self.location?.coordinate)!
+//            annotation.title = "Your current location"
+//            mapV.addAnnotation(annotation)
         }
     }
 

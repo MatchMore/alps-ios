@@ -169,7 +169,7 @@ class MatchTableViewController: UITableViewController {
         tabBarController?.tabBar.items?[0].badgeValue = String(describing: notificationCounter)
         let topic = match.publication?.topic
         let selector = match.subscription?.selector
-        let alert = UIAlertController(title: "New match !", message: "Topic : \(String(describing: topic!))\nSelector : \(String(describing: selector!))", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "An interesting offer is close to you!", message: "Topic : \(String(describing: topic!))\nSelector : \(String(describing: selector!))", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Understood", style: .default, handler: nil))
         self.present(alert, animated: true)
     }

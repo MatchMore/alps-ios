@@ -64,9 +64,10 @@ class OffPublicationViewController: UIViewController, UITextFieldDelegate, UINav
         let ourRange : Double! = Double(rangeTextField.text!) ?? 100.0
         let ourDuration : Double! = Double(durationTextField.text!) ?? 60.0
         // Construct the properties
+        let ourPrice : Double! = Double(priceTextField.text!) ?? 0.0
         var properties = [String: String]()
         properties[concertLabel.text!] = "'\(concertTextField.text!)'"
-        properties[priceLabel.text!] = "'\(priceTextField.text!)'"
+        properties[priceLabel.text!] = "'\(ourPrice!)'"
         
         print("topic : \(String(describing: ourTopic)), range : \(String(describing: ourRange!)), duration : \(String(describing: ourDuration!)), properties : \(String(describing: properties)).")
         createPublication(topic: ourTopic, range: ourRange, duration: ourDuration, properties: properties)

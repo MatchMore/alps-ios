@@ -248,7 +248,7 @@
                             <outlet property="delegate" destination="gEw-F6-61B" id="Xfd-01-QO5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Publications" id="fIH-tV-h09">
+                    <navigationItem key="navigationItem" title="Offers" id="fIH-tV-h09">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GVT-HF-ieq">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -756,7 +756,7 @@
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Concert :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWJ-PB-Oxb">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="WeU-Sx-5G1"/>
+                                            <constraint firstAttribute="width" constant="100" id="sGq-hw-9lb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -974,7 +974,7 @@
         <scene sceneID="8Yj-Qb-evs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yB0-bh-udK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Matches" image="match" id="ufA-5V-DyZ"/>
+                    <tabBarItem key="tabBarItem" title="Matches" image="Exchange" id="ufA-5V-DyZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SYv-4S-mXl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1260,11 +1260,11 @@
             </objects>
             <point key="canvasLocation" x="1131.8840579710145" y="3479.347826086957"/>
         </scene>
-        <!--Subscription-->
+        <!--Find tickets-->
         <scene sceneID="8Gd-Jw-rYv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f5k-Yz-1jV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Subscription" image="link" id="W5c-Fs-B2J"/>
+                    <tabBarItem key="tabBarItem" title="Find tickets" image="find" id="W5c-Fs-B2J"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3Eb-Oh-ubY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1566,11 +1566,11 @@
             </objects>
             <point key="canvasLocation" x="4524.6376811594209" y="3429.6195652173915"/>
         </scene>
-        <!--Publications-->
+        <!--Sell tickets-->
         <scene sceneID="c4w-v0-QJf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j78-ja-H6d" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Publications" image="cloud" id="LzZ-lc-jvH"/>
+                    <tabBarItem key="tabBarItem" title="Sell tickets" image="cloud" id="LzZ-lc-jvH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WlU-wq-sHx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1815,13 +1815,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Exchange" width="25" height="25"/>
         <image name="check" width="256" height="256"/>
         <image name="cloud" width="25" height="25"/>
-        <image name="link" width="25" height="25"/>
-        <image name="match" width="25" height="25"/>
+        <image name="find" width="25" height="25"/>
         <image name="profile" width="37" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jee-Wu-Umo"/>
+        <segue reference="MRi-ka-VsH"/>
     </inferredMetricsTieBreakers>
 </document>
