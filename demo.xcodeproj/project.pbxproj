@@ -21,6 +21,10 @@
 		843CEEC21F166DA600BD074E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843CEEC01F166DA600BD074E /* LaunchScreen.storyboard */; };
 		843CEECD1F166DA600BD074E /* demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843CEECC1F166DA600BD074E /* demoTests.swift */; };
 		843CEED81F166DA600BD074E /* demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843CEED71F166DA600BD074E /* demoUITests.swift */; };
+		848AF7801F29D7BD00A3A1A4 /* License - READ THIS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 848AF77C1F29D7BD00A3A1A4 /* License - READ THIS.txt */; };
+		848AF7811F29D7BD00A3A1A4 /* remachine_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 848AF77D1F29D7BD00A3A1A4 /* remachine_flag.png */; };
+		848AF7821F29D7BD00A3A1A4 /* remachine_poster.png in Resources */ = {isa = PBXBuildFile; fileRef = 848AF77E1F29D7BD00A3A1A4 /* remachine_poster.png */; };
+		848AF7831F29D7BD00A3A1A4 /* RemachineScript_Personal_Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848AF77F1F29D7BD00A3A1A4 /* RemachineScript_Personal_Use.ttf */; };
 		848CF2211F18F4FD00942FBD /* SubscriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF2201F18F4FD00942FBD /* SubscriptionTableViewCell.swift */; };
 		848CF2231F18F53500942FBD /* SubscriptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF2221F18F53500942FBD /* SubscriptionTableViewController.swift */; };
 		848CF2281F18FE5F00942FBD /* PublicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF2271F18FE5F00942FBD /* PublicationTableViewController.swift */; };
@@ -65,6 +69,10 @@
 		843CEED31F166DA600BD074E /* demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		843CEED71F166DA600BD074E /* demoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demoUITests.swift; sourceTree = "<group>"; };
 		843CEED91F166DA600BD074E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848AF77C1F29D7BD00A3A1A4 /* License - READ THIS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "License - READ THIS.txt"; sourceTree = "<group>"; };
+		848AF77D1F29D7BD00A3A1A4 /* remachine_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remachine_flag.png; sourceTree = "<group>"; };
+		848AF77E1F29D7BD00A3A1A4 /* remachine_poster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remachine_poster.png; sourceTree = "<group>"; };
+		848AF77F1F29D7BD00A3A1A4 /* RemachineScript_Personal_Use.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RemachineScript_Personal_Use.ttf; sourceTree = "<group>"; };
 		848CF2201F18F4FD00942FBD /* SubscriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionTableViewCell.swift; sourceTree = "<group>"; };
 		848CF2221F18F53500942FBD /* SubscriptionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionTableViewController.swift; sourceTree = "<group>"; };
 		848CF2271F18FE5F00942FBD /* PublicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicationTableViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 		843CEEAB1F166DA600BD074E = {
 			isa = PBXGroup;
 			children = (
+				848AF77B1F29D7BD00A3A1A4 /* remachine_script */,
 				843CEEB61F166DA600BD074E /* demo */,
 				843CEECB1F166DA600BD074E /* demoTests */,
 				843CEED61F166DA600BD074E /* demoUITests */,
@@ -158,6 +167,17 @@
 				843CEED91F166DA600BD074E /* Info.plist */,
 			);
 			path = demoUITests;
+			sourceTree = "<group>";
+		};
+		848AF77B1F29D7BD00A3A1A4 /* remachine_script */ = {
+			isa = PBXGroup;
+			children = (
+				848AF77C1F29D7BD00A3A1A4 /* License - READ THIS.txt */,
+				848AF77D1F29D7BD00A3A1A4 /* remachine_flag.png */,
+				848AF77E1F29D7BD00A3A1A4 /* remachine_poster.png */,
+				848AF77F1F29D7BD00A3A1A4 /* RemachineScript_Personal_Use.ttf */,
+			);
+			path = remachine_script;
 			sourceTree = "<group>";
 		};
 		848CF2241F18F54200942FBD /* Subscription View */ = {
@@ -301,6 +321,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				843CEEC21F166DA600BD074E /* LaunchScreen.storyboard in Resources */,
+				848AF7801F29D7BD00A3A1A4 /* License - READ THIS.txt in Resources */,
+				848AF7831F29D7BD00A3A1A4 /* RemachineScript_Personal_Use.ttf in Resources */,
+				848AF7811F29D7BD00A3A1A4 /* remachine_flag.png in Resources */,
+				848AF7821F29D7BD00A3A1A4 /* remachine_poster.png in Resources */,
 				843CEEBF1F166DA600BD074E /* Assets.xcassets in Resources */,
 				843CEEBD1F166DA600BD074E /* Main.storyboard in Resources */,
 			);
