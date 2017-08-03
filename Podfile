@@ -6,8 +6,11 @@ target 'demo' do
   use_frameworks!
 
   # Pods for demo
-  pod 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git', :tag => '0.0.3'
-  pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => '0.0.3'
+  
+  #pod 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git', :tag => '0.0.3'
+  #pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => '0.0.3'
+pod 'Alps', :path => '../alps-ios-api'
+pod 'AlpsSDK', :path => '../alps-ios-sdk'  
 
   target 'demoTests' do
     inherit! :search_paths
