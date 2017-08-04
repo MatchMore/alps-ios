@@ -48,6 +48,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 (_ beacon) in
                 print("Closest beacon seen ! ! ! ! \(beacon)")
             }
+            // Manipulate and access the object is different
+            let mEx1 = Device.init(name: "", platform: "", deviceToken: "")
+            
+            let mEx2 = PMobileDevice.init(name: "", platform: "", deviceToken: "", location: nil)
+            
+            let bEx = PBeaconDevice.init(name: "", uuid: UUID.init(uuidString: "123")!, major: 1, minor: 1)
+            
         }
         return true
     }
