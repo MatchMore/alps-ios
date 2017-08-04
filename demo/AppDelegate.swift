@@ -44,6 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var uuids = alps.getUuid()
             print(uuids)
             alps.startRanging(forUuid: uuids[0], identifier: "BEACONREG1")
+            alps.onBeaconUpdate() {
+                (_ beacon) in
+                print("Closest beacon seen ! ! ! ! \(beacon)")
+            }
         }
         return true
     }
