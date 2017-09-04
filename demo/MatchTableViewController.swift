@@ -77,9 +77,9 @@ class MatchTableViewController: UITableViewController {
         
         cell.match = m
         
-        cell.matchIdLabel.text = m.matchId!
+        cell.matchIdLabel.text = m.id!
         cell.topicLabel.text = m.publication?.topic!
-        cell.timeStampLabel.text = transformTimestampToDate(timestamp: m.timestamp!)
+        cell.timeStampLabel.text = transformTimestampToDate(timestamp: m.createdAt!)
         
         
         return cell

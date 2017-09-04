@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userId : String?
     // UUID identifier given by Matchmore to identify devices
     var deviceId : String?
-    var device : Device?
+    var device : MobileDevice?
     
     // MARK: User input
     var username = ""
@@ -43,17 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             alps = AlpsManager(apiKey: APIKEY, clLocationManager : locationManager)
             var uuids = alps.getUuid()
             print(uuids)
-            alps.startRanging(forUuid: uuids[0], identifier: "BEACONREG1")
-            alps.onBeaconUpdate() {
-                (_ beacon) in
-                print("Closest beacon seen ! ! ! ! \(beacon)")
-            }
+//            alps.startRangingBeacons(forUuid: uuids[0], identifier: "BEACONREG1")
+//            alps.getClosestOnBeaconUpdate{
+//                (_ beacon) in
+//                print("Closest beacon seen ! ! ! ! \(beacon)")
+//            }
             // Manipulate and access the object is different
-            let mEx1 = Device.init(name: "", platform: "", deviceToken: "")
-            
-            let mEx2 = PMobileDevice.init(name: "", platform: "", deviceToken: "", location: nil)
-            
-            let bEx = PBeaconDevice.init(name: "", uuid: UUID.init(uuidString: "123")!, major: 1, minor: 1)
+//            let mEx1 = Device.init(name: "", platform: "", deviceToken: "")
+//            
+//            let mEx2 = PMobileDevice.init(name: "", platform: "", deviceToken: "", location: nil)
+//            
+//            let bEx = PBeaconDevice.init(name: "", uuid: UUID.init(uuidString: "123")!, major: 1, minor: 1)
             
         }
         return true

@@ -67,9 +67,9 @@ class PublicationTableViewController: UITableViewController {
             fatalError("PublicationTableViewController error : the publication is not from a Publication class.")
         }
         
-        cell.publicationIdLabel.text = pub.publicationId!
+        cell.publicationIdLabel.text = pub.id!
         cell.topicLabel.text = pub.topic!
-        cell.timeStampLabel.text = transformTimestampToDate(timestamp: pub.timestamp!)
+        cell.timeStampLabel.text = transformTimestampToDate(timestamp: pub.createdAt!)
         cell.durationLabel.text = String(describing: pub.duration!)
         
         return cell

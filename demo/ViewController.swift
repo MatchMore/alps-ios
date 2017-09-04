@@ -105,18 +105,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.appDelegate.username = userInput!
             self.appDelegate.deviceName = "\(String(describing: self.appDelegate.username))'s device"
             getLastLocation()
-            DoLogin(self.appDelegate.username)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-            vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-            self.present(vc, animated: true, completion: nil)
+            let device = DoLogin(self.appDelegate.username)
+            if device != nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                self.present(vc, animated: true, completion: nil)
+            } else {
+                print("ERROR IN API CALL, check MatchMore service is working.")
+            }
         }
     }
     
     // Calls the functions that will create the user and the device in Matchmore
-    func DoLogin(_ username: String){
+    func DoLogin(_ username: String) -> MobileDevice? {
+        var d : MobileDevice?
         createDevice(username: username) {
+            (_ device) in
+            d = device
         }
+        return d
     }
     
     // Store the last location's data for latter use
@@ -170,13 +178,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     //MARK: AlpsSDK functions
     
     // Calls Matchmore to create the user and device
-    func createDevice(username : String, completion: @escaping () -> Void) {
+    func createDevice(username : String, completion: @escaping (_ device: MobileDevice?) -> Void) {
+        var deviceCompletion = completion
         alps.createUser(self.appDelegate.username) {
             (_ user) in
             if let u = user {
-                print("Created user: id = \(String(describing: u.userId!)), name = \(String(describing: u.name!))")
+                print("Created user: id = \(String(describing: u.id!)), name = \(String(describing: u.name!))")
                 
-                guard let userId = u.userId else{
+                guard let userId = u.id else{
                     print("ERROR : No userId found")
                     return
                 }
@@ -196,13 +205,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     return
                 }
                 
-                self.alps.createDevice(name: self.appDelegate.deviceName, platform: "iOS 10.2",
+                self.alps.createMobileDevice(name: self.appDelegate.deviceName, platform: "iOS 10.2",
                                        deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
                                        latitude: latitude, longitude: longitude, altitude: altitude,
                                        horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy) {
                                         (_ device) in
                                         if let d = device {
-                                            guard let deviceId = d.deviceId else{
+                                            guard let deviceId = d.id else{
                                                 print("ERROR : No deviceId found.")
                                                 return
                                             }
@@ -214,22 +223,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                                             print("Created device: id = \(String(describing: deviceId)), name = \(String(describing: name))")
                                             self.appDelegate.device = d
                                             self.appDelegate.deviceId = deviceId
-                                            completion()
+                                            deviceCompletion(device as? MobileDevice)
                                         }
                                     }
             }
         }
-    }
-    
-    // Start the match service
-    func monitorMatches() {
-        alps.startMonitoringMatches()
-    }
-    
-    // Get the match
-    func monitorMatchesWithCompletion(completion: @escaping (_ match: Match) -> Void) {
-        alps.onMatch(completion: completion)
-        alps.startMonitoringMatches()
     }
     
     /*

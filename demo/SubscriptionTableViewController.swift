@@ -60,9 +60,9 @@ class SubscriptionTableViewController: UITableViewController {
             fatalError("SubscriptionTableViewController error : the subscription is not from a Subscription class.")
         }
         
-        cell.subscriptionIdLabel.text = sub.subscriptionId!
+        cell.subscriptionIdLabel.text = sub.id!
         cell.durationLabel.text = String(describing: sub.duration!)
-        cell.timeStampLabel.text = transformTimestampToDate(timestamp: sub.timestamp!)
+        cell.timeStampLabel.text = transformTimestampToDate(timestamp: sub.createdAt!)
         cell.topicLabel.text = sub.topic!
         return cell
     }

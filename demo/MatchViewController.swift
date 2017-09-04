@@ -37,18 +37,18 @@ class MatchViewController: UIViewController {
             print("ERROR in MatchViewController : match not found.")
             return
         }
-        matchIdLabel.text = match.matchId
-        timeStampLabel.text = transformTimestampToDate(timestamp: match.timestamp!)
+        matchIdLabel.text = match.id
+        timeStampLabel.text = transformTimestampToDate(timestamp: match.createdAt!)
         if let publication = match.publication{
             topicLabel.text = publication.topic
-            publicationIdLabel.text = publication.publicationId
+            publicationIdLabel.text = publication.id
             publicationRangeLabel.text = String(describing: publication.range!)
             if let concert = publication.properties?["Concert"]{
                 publicationPropertiesLabel.text = concert
             }
         }
         if let subscription = match.subscription{
-            subscriptionIdLabel.text = subscription.subscriptionId
+            subscriptionIdLabel.text = subscription.id
             subscriptionRangeLabel.text = String(describing: subscription.range!)
             subscriptionPropertiesLabel.text = String(describing: subscription.selector!)
         }

@@ -80,7 +80,7 @@ class OffSubscriptionViewController: UIViewController, UITextFieldDelegate, UINa
                                                      selector: selector, range: range, duration: duration) {
                                                         (_ subscription) in
                                                         if let s = subscription {
-                                                            print("Created subscription: id = \(String(describing: s.subscriptionId!)), topic = \(String(describing: s.topic!)), selector = \(String(describing: s.selector!))")
+                                                            print("Created subscription: id = \(String(describing: s.id!)), topic = \(String(describing: s.topic!)), selector = \(String(describing: s.selector!))")
                                                             self.subscription = s
                                                         }
             }

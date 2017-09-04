@@ -43,10 +43,10 @@ class DetailViewController: UIViewController {
             labelIdLabel.text = "Publication ID :"
             labelPropertiesLabel.text = "Properties"
             
-            idLabel.text = p.publicationId
+            idLabel.text = p.id
             deviceIdLabel.text = p.deviceId
             topicLabel.text = p.topic
-            if let timestamp = p.timestamp{
+            if let timestamp = p.createdAt{
                 timeStampLabel.text = transformTimestampToDate(timestamp: timestamp)
             }
             if let range = p.range{
@@ -55,7 +55,6 @@ class DetailViewController: UIViewController {
             if let duration = p.duration {
                 durationLabel.text = String(describing: duration)
             }
-            print("loc")
             if let location = self.appDelegate.device?.location {
                 print("In location")
                 if let latitude = location.latitude{
@@ -81,10 +80,10 @@ class DetailViewController: UIViewController {
             labelIdLabel.text = "Subscription ID :"
             labelPropertiesLabel.text = "Selector :"
             
-            idLabel.text = s.subscriptionId
+            idLabel.text = s.id
             deviceIdLabel.text = s.deviceId
             topicLabel.text = s.topic
-            if let timestamp = s.timestamp{
+            if let timestamp = s.createdAt{
                 timeStampLabel.text = transformTimestampToDate(timestamp: timestamp)
             }
             if let range = s.range{

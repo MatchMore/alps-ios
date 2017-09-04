@@ -77,7 +77,7 @@ class OffPublicationViewController: UIViewController, UITextFieldDelegate, UINav
     //MARK: AlpsSDK Functions
     
     // Calls The AlpsSDK to create a publication
-    func createPublication(topic: String, range: Double, duration: Double, properties: Properties) {
+    func createPublication(topic: String, range: Double, duration: Double, properties: [String:String]) {
         if self.appDelegate.device != nil {
             // XXX: the property syntax is tricky at the moment: in our example concert is a variable and 'montreuxjazz' is a string value
             
@@ -86,7 +86,7 @@ class OffPublicationViewController: UIViewController, UITextFieldDelegate, UINav
                                                     properties: properties) {
                                                         (_ publication) in
                                                         if let p = publication {
-                                                            print("Created publication: id = \(String(describing: p.publicationId)), topic = \(String(describing: p.topic)), properties = \(String(describing: p.properties))")
+                                                            print("Created publication: id = \(String(describing: p.id)), topic = \(String(describing: p.topic)), properties = \(String(describing: p.properties))")
                                                             self.publication = p
                                                         }
             }
