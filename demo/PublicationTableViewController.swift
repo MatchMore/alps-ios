@@ -32,6 +32,7 @@ class PublicationTableViewController: UITableViewController {
         if self.appDelegate.userId != nil && self.appDelegate.deviceId != nil {
             // call the API, to retrieve all the subscriptions for current user and device
             getAllPublicationsForDevice(self.appDelegate.userId!, deviceId: self.appDelegate.deviceId!)
+            self.tableView.reloadData()
         }else{
             print("ERROR in PUBLICATIONTABLEVIEWCONTROLLER: UserId or deviceId is nil.")
         }
@@ -148,6 +149,7 @@ class PublicationTableViewController: UITableViewController {
         
         return strDateSelect
     }
+    
     //MARK: Action
     @IBAction func unwindToPublicationList(sender: UIStoryboardSegue) {
     }

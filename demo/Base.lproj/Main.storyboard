@@ -107,7 +107,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fm-Ly-ntf">
                                 <rect key="frame" x="0.0" y="-10" width="414" height="220"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ticketing App" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="9Dc-6f-DoP">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demo" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="9Dc-6f-DoP">
                                         <rect key="frame" x="72" y="76" width="271" height="104"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="271" id="tLN-5T-3Dm"/>
@@ -974,7 +974,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yB0-bh-udK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Matches" image="Exchange" id="ufA-5V-DyZ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SYv-4S-mXl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SYv-4S-mXl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

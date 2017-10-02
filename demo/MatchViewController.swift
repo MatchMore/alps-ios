@@ -28,8 +28,6 @@ class MatchViewController: UIViewController {
     @IBOutlet weak var subscriptionRangeLabel: UILabel!
     @IBOutlet weak var subscriptionPropertiesLabel: UILabel!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Sets the view and shows selected match informations

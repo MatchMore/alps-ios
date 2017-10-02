@@ -42,7 +42,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginButton.isEnabled = false
         // Ask for location permission
         // You might need to add "Privacy - Location Always Usage Description" and "Privacy - Location When In Use Usage Description" in your Info.plist file.
         let authorizationStatus = CLLocationManager.authorizationStatus()
@@ -95,7 +94,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
      *  Do some verifications after the user pressed the login UIButton.
      */
     @IBAction func LoginButton(_ sender: Any) {
-        
+        loginButton.isEnabled = false
         let userInput = _username.text
         
         if(_username.text?.isEmpty ?? true){
@@ -105,24 +104,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.appDelegate.username = userInput!
             self.appDelegate.deviceName = "\(String(describing: self.appDelegate.username))'s device"
             getLastLocation()
-            let device = DoLogin(self.appDelegate.username)
-            if device != nil {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-                vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                self.present(vc, animated: true, completion: nil)
-            } else {
-                print("ERROR IN API CALL, check MatchMore service is working.")
+            let device = DoLogin(self.appDelegate.username) {
+                if self.appDelegate.deviceId != nil, (self.appDelegate.userId != nil) {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                    vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                    self.present(vc, animated: true, completion: nil)
+                } else {
+                    print("ERROR IN API CALL, check MatchMore service is working.")
+                }
             }
         }
     }
     
     // Calls the functions that will create the user and the device in Matchmore
-    func DoLogin(_ username: String) -> MobileDevice? {
+    func DoLogin(_ username: String, completion: @escaping () -> Void) -> MobileDevice? {
         var d : MobileDevice?
         createDevice(username: username) {
             (_ device) in
             d = device
+            completion()
         }
         return d
     }

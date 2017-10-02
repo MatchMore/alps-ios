@@ -8,15 +8,15 @@
     "0DE163CDAE41DECED67B33067400786F0D66DCB4" : 9223372036854775807,
     "2A7CC117A0328588DBC06BB0A67A77A6C90443FD" : 9223372036854775807
   },
-  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "21A00617-042D-4778-AE21-02EDC815EAD7",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BAB7E831-BCF1-45FF-91A8-5243D75DFDE1",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "385AED1204281BFC5C4696062D0866464EB49562" : "alps-ios-api\/",
     "0DE163CDAE41DECED67B33067400786F0D66DCB4" : "alps-ios\/",
     "2A7CC117A0328588DBC06BB0A67A77A6C90443FD" : "alps-ios-sdk\/"
   },
-  "DVTSourceControlWorkspaceBlueprintNameKey" : "demo",
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Alps-ios-demo",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "demo.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Alps-ios-demo.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/MatchMore\/alps-ios.git",
