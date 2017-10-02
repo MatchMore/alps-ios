@@ -7,7 +7,7 @@ target 'Alps-ios-Alps-ios-demo' do
 
   # Pods for Alps-ios-Alps-ios-demo
 pod 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git', :tag => '0.4.0'
-pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => ‘0.4.1’
+pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => ‘0.4.2’
 #pod 'Alps', :path => '../alps-ios-api'
 #pod 'AlpsSDK', :path => '../alps-ios-sdk' 
 
