@@ -1,6 +1,6 @@
-# Ticketing App
+# Alps-ios-demo
 
-Ticketing App is a working demo application taking advantage of the [Matchmore](http://dev.matchmore.com/) ALPS service. 
+Alps-ios-demo is a working application taking advantage of the [Matchmore](http://dev.matchmore.com/) ALPS service. 
 
 ## Installation
 
